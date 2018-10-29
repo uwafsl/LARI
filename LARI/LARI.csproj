@@ -45,15 +45,6 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="UWLARI">
-      <HintPath>..\..\..\..\..\UWSDK\UWSDK\UWLARI\bin\Debug\UWLARI.dll</HintPath>
-    </Reference>
-    <Reference Include="UWUtilities">
-      <HintPath>..\..\..\..\..\UWSDK\UWSDK\UWUtilities\bin\Debug\UWUtilities.dll</HintPath>
-    </Reference>
-    <Reference Include="UWWPF">
-      <HintPath>..\..\..\..\..\UWSDK\UWSDK\UWWPF\bin\Debug\UWWPF.dll</HintPath>
-    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
