@@ -1,0 +1,21 @@
+﻿<Window x:Class="LARI.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:LARI="clr-namespace:LARI.Views"
+        Title="LAboratory Reconciliation and Information (LARI) System"
+		Width="850" Height="450">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+    </Window.Resources>
+    <Grid> 
+		<TabControl Height="auto">
+            <TabItem Header="Component Tracker">
+                <Grid Background="#FFE5E5E5">
+                    <LARI:ComponentTrackerView />
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
