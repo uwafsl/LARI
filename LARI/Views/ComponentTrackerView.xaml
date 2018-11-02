@@ -56,11 +56,16 @@
                         </StackPanel>
                     </Grid>
                     <Grid>
-                        <DataGrid Name = "SystemsTable" IsReadOnly="True" ItemsSource="{Binding Systems, UpdateSourceTrigger=PropertyChanged}" SelectionMode="Single" SelectedItem="{Binding SelectedSystem}" SelectionUnit="FullRow" AlternatingRowBackground = "LightCyan" AlternationCount="2" AutoGenerateColumns="True">
+                        <DataGrid Name = "SystemsTable" IsReadOnly="True"
+                                  ItemsSource="{Binding Systems, UpdateSourceTrigger=PropertyChanged}"
+                                  SelectionMode="Single"
+                                  SelectedItem="{Binding SelectedSystem}" SelectionUnit="FullRow"
+                                  AlternatingRowBackground = "LightCyan" AlternationCount="2"
+                                  AutoGenerateColumns="False">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header = "System" Binding ="{Binding ComponentName}"/>
-                                <DataGridTextColumn Header = "Description" Binding="{Binding ComponentDescription}"/>
-                                <DataGridComboBoxColumn Header="Wing Type" SelectedItemBinding="{Binding SelectedWingType}" />
+                                <DataGridTextColumn Header = "System" Binding ="{Binding Name}"/>
+                                <DataGridTextColumn Header = "Description" Binding="{Binding Description}"/>
+                                <DataGridTextColumn Header = "Wing Type" Binding="{Binding WingType}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
