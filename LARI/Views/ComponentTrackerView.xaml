@@ -65,7 +65,7 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header = "System" Binding ="{Binding Name}"/>
                                 <DataGridTextColumn Header = "Description" Binding="{Binding Description}"/>
-                                <DataGridTextColumn Header = "Wing Type" Binding="{Binding WingType}"/>
+                                <DataGridTextColumn Header = "Wing Type" Binding="{Binding WingTypeName}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
