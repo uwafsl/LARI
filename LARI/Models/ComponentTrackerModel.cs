@@ -69,6 +69,7 @@ namespace LARI.Models
                 roster.AddSystem(newSystem);
                 foreach (var component in doc.Root.Elements("afslsystem"))
                 {
+                    // TODO: fix this
                     UW.LARI.Datatypes.Component newComponent = new UW.LARI.Datatypes.Component(component.Attribute("description").Value, int.Parse(component.Attribute("id").Value));
                     newSystem.AddComponent(newComponent);
                 }
