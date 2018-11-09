@@ -56,7 +56,7 @@
                         </StackPanel>
                     </Grid>
                     <Grid>
-                        <DataGrid Name = "SystemsTable" IsReadOnly="True" ItemsSource="{Binding Systems, UpdateSourceTrigger=PropertyChanged}" SelectionMode="Single" SelectedItem="{Binding SelectedSystem}" SelectionUnit="FullRow" AlternatingRowBackground = "LightCyan" AlternationCount="2" AutoGenerateColumns="True">
+                        <DataGrid Name = "SystemsTable" IsReadOnly="True" ItemsSource="{Binding Path=Systems, UpdateSourceTrigger=PropertyChanged}" SelectionMode="Single" SelectedItem="{Binding SelectedSystem}" SelectionUnit="FullRow" AlternatingRowBackground = "LightCyan" AlternationCount="2" AutoGenerateColumns="True">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header = "System" Binding ="{Binding ComponentName}"/>
                                 <DataGridTextColumn Header = "Description" Binding="{Binding ComponentDescription}"/>

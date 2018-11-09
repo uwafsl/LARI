@@ -5,6 +5,7 @@ using LARI.Models;
 using LARI.Utilities;
 using System.Windows.Input;
 using System.Windows;
+using System.Collections.ObjectModel;
 
 namespace LARI.ViewModels
 {
@@ -33,9 +34,9 @@ namespace LARI.ViewModels
         private CommandHandler applySystemWindow;
 
         /// <summary>
-        /// Command to cancel adding/editing system and exit window.
+        /// ComponentTrackerViewModel which initialized current AddSystemWindow.
         /// </summary>
-        private CommandHandler cancelSystemWindow;
+        private ComponentTrackerViewModel componentTracker;
 
         #endregion
 
@@ -44,8 +45,9 @@ namespace LARI.ViewModels
         /// <summary>
         /// Default constructor
         /// </summary>
-        public AddSystemViewModel()
+        public AddSystemViewModel(ComponentTrackerViewModel vM)
         {
+            componentTracker = vM;
             this.startErrorHandling();
             this.initializeOtherPrivateFields();
             this.createCommands();
@@ -107,24 +109,34 @@ namespace LARI.ViewModels
             get { return this.applySystemWindow; }
         }
 
-        /// <summary>
-        /// Gets cancel system command.
-        /// </summary>
-        public CommandHandler CancelSystemWindow
-        {
-            get { return this.cancelSystemWindow; }
-        }
-
         #endregion
 
         #region Public Methods
         /// <summary>
-        /// Adds system to equipage. 
+        /// Adds system to equipage. If editing component, removes old component and adds edited component.
         /// </summary>
         public void ApplySystem()
         {
-            this.manager.AcquireEquipage().AddSystem(this.system);
-            this.clearTextFields();
+            try
+            {
+                ObservableCollection<AFSLSystem> tempSystem = this.componentTracker.Systems;
+                if (this.componentTracker.IsInEditMode)
+                {
+                    tempSystem.Remove(this.componentTracker.SelectedSystem);
+                    this.manager.AcquireEquipage().RemoveSystem(this.componentTracker.SelectedSystem.Name);
+                }
+                tempSystem.Add(this.system);
+                this.componentTracker.Systems = tempSystem;
+                this.manager.AcquireEquipage().AddSystem(this.system);
+                this.clearTextFields();
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message,
+                                   "Add System",
+                                   MessageBoxButton.OK,
+                                   MessageBoxImage.Warning);
+            }
         }
 
         /// <summary>
@@ -137,26 +149,18 @@ namespace LARI.ViewModels
             return true;
         }
 
-        /// <summary>
-        /// TODO: Closes window when cancel command is executed
-        /// </summary>
-        public void CancelSystem()
-        {
-
-        }
-
-        /// <summary>
-        /// Condition for whether "cancel" button is enabled. "Cancel" should always be enabled.
-        /// </summary>
-        /// <returns>Always returns true to allow user to cancel adding system, thus closing the window.</returns>
-        public bool CanCancelSystem()
-        {
-            return true;
-        }
-
         #endregion
 
         #region Private Methods (acquire/release controller, create/dispose commands, subscribe/unsubscribe events, start/stop error handling, initialize/dispose private fields)
+        private AFSLSystem initializeSystem()
+        {
+            if (this.componentTracker.IsInEditMode)
+            {
+                return componentTracker.SelectedSystem;
+            }
+            return new AFSLSystem();
+        }
+        
         /// <summary>
         /// Clears all text boxes.
         /// </summary>
@@ -187,7 +191,6 @@ namespace LARI.ViewModels
         private void createCommands()
         {
             this.applySystemWindow = new CommandHandler(ApplySystem, CanApplySystem());
-            this.cancelSystemWindow = new CommandHandler(CancelSystem, CanCancelSystem());
         }
 
         private void disposeCommands()
@@ -227,7 +230,7 @@ namespace LARI.ViewModels
         /// </summary>
         private void initializeOtherPrivateFields()
         {
-            this.system = new AFSLSystem();
+            this.system = initializeSystem();
         }
 
         /// <summary>

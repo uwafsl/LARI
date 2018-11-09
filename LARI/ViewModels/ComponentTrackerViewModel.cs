@@ -13,7 +13,7 @@ using UW.WPF;
 
 namespace LARI.ViewModels
 {
-    class ComponentTrackerViewModel : ViewModelBaseUW, IDisposable
+    public class ComponentTrackerViewModel : ViewModelBaseUW, IDisposable
     {
         #region Fields
         /// <summary>
@@ -76,6 +76,11 @@ namespace LARI.ViewModels
         /// Command to delete currently selected system.
         /// </summary>
         private CommandHandler deleteComponentCommand;
+
+        /// <summary>
+        /// Boolean to communicate with AddSystem/Component View about if edit has been clicked.
+        /// </summary>
+        private bool isInEditMode;
 
         #endregion
 
@@ -222,6 +227,11 @@ namespace LARI.ViewModels
             get { return this.deleteComponentCommand; }
         }
 
+        public bool IsInEditMode
+        {
+            get { return this.isInEditMode; }
+        }
+
         #endregion
 
         #region Public Methods
@@ -323,7 +333,7 @@ namespace LARI.ViewModels
         /// </summary>
         public void AddSystem()
         {
-            AddSystemWindow addSystemWindow = new AddSystemWindow();
+            AddSystemWindow addSystemWindow = new AddSystemWindow(this);
             addSystemWindow.ShowDialog();
         }
 
@@ -343,7 +353,9 @@ namespace LARI.ViewModels
         {
             if (CanEditOrDeleteSystem())
             {
-                // edit functionality goes here
+                this.isInEditMode = true;
+                AddSystemWindow addSystemWindow = new AddSystemWindow(this);
+                addSystemWindow.ShowDialog();
             }
             else
             {
@@ -534,6 +546,7 @@ namespace LARI.ViewModels
             this.equipageFilePath = string.Empty;
             this.systems = new ObservableCollection<AFSLSystem>();
             this.selectedSystem = null;
+            this.isInEditMode = false;
         }
 
         /// <summary>
