@@ -9,9 +9,6 @@ namespace LARI.Models
     /// </summary>
     public sealed class EquipageModel
     {
-        // Version History
-        // 05/25/18: Created
-
         #region Fields
         
         /// <summary>
