@@ -11,7 +11,7 @@ namespace LARI
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            ManagerModel.Instance.InitializeToDefaultState();
+            EquipageModel.Instance.InitializeToDefaultState();
  
             //Equipage equipage = ManagerModel.Instance.AcquireEquipage();
 

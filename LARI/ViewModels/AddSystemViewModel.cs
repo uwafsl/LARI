@@ -20,7 +20,7 @@ namespace LARI.ViewModels
         /// <summary>
         /// Singleton manager for equipage.
         /// </summary>
-        private ManagerModel manager;
+        private EquipageModel manager;
 
         /// <summary>
         /// System to be added/edited.
@@ -171,7 +171,7 @@ namespace LARI.ViewModels
         /// </summary>
         private void acquireControllers()
         {
-            this.manager = ManagerModel.Instance;
+            this.manager = EquipageModel.Instance;
         }
 
         /// <summary>
