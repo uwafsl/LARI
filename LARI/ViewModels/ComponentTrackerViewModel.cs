@@ -230,6 +230,7 @@ namespace LARI.ViewModels
         public bool IsInEditMode
         {
             get { return this.isInEditMode; }
+            set { this.isInEditMode = value; }
         }
 
         #endregion
@@ -333,6 +334,7 @@ namespace LARI.ViewModels
         /// </summary>
         public void AddSystem()
         {
+            IsInEditMode = false;
             AddSystemWindow addSystemWindow = new AddSystemWindow(this);
             addSystemWindow.ShowDialog();
         }
@@ -353,7 +355,7 @@ namespace LARI.ViewModels
         {
             if (CanEditOrDeleteSystem())
             {
-                this.isInEditMode = true;
+                IsInEditMode = true;
                 AddSystemWindow addSystemWindow = new AddSystemWindow(this);
                 addSystemWindow.ShowDialog();
             }

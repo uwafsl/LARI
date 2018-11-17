@@ -38,7 +38,6 @@ namespace LARI.Models
         #region Fields
 
         private ManagerModel manager;
-        private object afslsystem;
 
         #endregion
 
@@ -61,20 +60,7 @@ namespace LARI.Models
         /// </summary>
         private void acquireControllers()
         {
-            var doc = XDocument.Parse("Equipage.xml");
-            var roster = new Equipage();
-            foreach (var afslsystem in doc.Root.Element("equipage").Elements("afslsystem"))
-            {
-                AFSLSystem newSystem = new AFSLSystem(afslsystem.Attribute("Name").Value, afslsystem.Attribute("WingType").Value);
-                roster.AddSystem(newSystem);
-                foreach (var component in doc.Root.Elements("afslsystem"))
-                {
-                    // TODO: fix this
-                    UW.LARI.Datatypes.Component newComponent = new UW.LARI.Datatypes.Component(component.Attribute("description").Value, int.Parse(component.Attribute("id").Value));
-                    newSystem.AddComponent(newComponent);
-                }
-            }
-            manager.AcquireEquipage();
+
         }
 
         /// <summary>

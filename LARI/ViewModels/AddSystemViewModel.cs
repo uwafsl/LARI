@@ -117,25 +117,29 @@ namespace LARI.ViewModels
         /// </summary>
         public void ApplySystem()
         {
+            bool exception = false;
+            ObservableCollection<AFSLSystem> tempSystem = this.componentTracker.Systems;
             try
             {
-                ObservableCollection<AFSLSystem> tempSystem = this.componentTracker.Systems;
+                this.manager.AcquireEquipage().AddSystem(this.system);
+            }
+            catch (System.Exception ex)
+            {
+                exception = true;
+                MessageBox.Show(ex.Message,
+                                   "Add System",
+                                   MessageBoxButton.OK,
+                                   MessageBoxImage.Warning);
+            }
+            if (exception == false)
+            {
                 if (this.componentTracker.IsInEditMode)
                 {
                     tempSystem.Remove(this.componentTracker.SelectedSystem);
                     this.manager.AcquireEquipage().RemoveSystem(this.componentTracker.SelectedSystem.Name);
                 }
                 tempSystem.Add(this.system);
-                this.componentTracker.Systems = tempSystem;
-                this.manager.AcquireEquipage().AddSystem(this.system);
                 this.clearTextFields();
-            }
-            catch (System.Exception ex)
-            {
-                MessageBox.Show(ex.Message,
-                                   "Add System",
-                                   MessageBoxButton.OK,
-                                   MessageBoxImage.Warning);
             }
         }
 
@@ -168,6 +172,7 @@ namespace LARI.ViewModels
         {
             Name = String.Empty;
             Description = String.Empty;
+            this.componentTracker.IsInEditMode = false;
         }
 
         /// <summary>

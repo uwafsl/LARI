@@ -6,7 +6,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:ViewModels="clr-namespace:LARI.ViewModels"
-             mc:Ignorable="d" 
+             xmlns:Datatypes="clr-namespace:UW.LARI.Datatypes;assembly=UWLARI"
+        mc:Ignorable="d" 
              d:DesignHeight="300" Width="500" MaxHeight="315">
     <StackPanel x:Name="AddSystem" Orientation="Vertical">
         <Grid Margin="0, 15, 0, 15">
@@ -24,12 +25,16 @@
         <Grid Margin="0, 15, 0, 15">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Wing Type:" Width="100" />
-                <ComboBox x:Name="Wing_Type" SelectedItem="{Binding Path=SelectedWingType}" Width="200" IsReadOnly="True" Background="White" BorderBrush="Gray">
-                    <ComboBoxItem Content=""/>
-                    <ComboBoxItem Content="Fixed Wing"/>
-                    <ComboBoxItem Content="Quad"/>
-                    <ComboBoxItem Content="Octo"/>
-                    <ComboBoxItem Content="N/A"/>
+                <ComboBox x:Name="Wing_Type" SelectedItem="{Binding SelectedWingType}" Width="200" 
+                          IsReadOnly="True" Background="White" BorderBrush="Gray">
+                    <ComboBox.DataContext>
+                        <Datatypes:WingTypes>Unspecified</Datatypes:WingTypes>
+                    </ComboBox.DataContext>
+                    <Datatypes:WingTypes>Unspecified</Datatypes:WingTypes>
+                    <Datatypes:WingTypes>FixedWing</Datatypes:WingTypes>
+                    <Datatypes:WingTypes>Quad</Datatypes:WingTypes>
+                    <Datatypes:WingTypes>Octo</Datatypes:WingTypes>
+                    <Datatypes:WingTypes>None</Datatypes:WingTypes>
                 </ComboBox>
             </StackPanel>
         </Grid>
