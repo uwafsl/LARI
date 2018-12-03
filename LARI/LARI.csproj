@@ -80,8 +80,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\ManagerModel.cs" />
-    <Compile Include="Models\ComponentTrackerModel.cs" />
+    <Compile Include="Models\EquipageModel.cs" />
     <Compile Include="Utilities\CommandHandler.cs" />
     <Compile Include="Views\AddComponentWindow.xaml.cs">
       <DependentUpon>AddComponentWindow.xaml</DependentUpon>

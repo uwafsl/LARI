@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
-using System.Windows.Input;
 using System.Xml;
 using LARI.Models;
 using LARI.Utilities;
@@ -17,9 +16,9 @@ namespace LARI.ViewModels
     {
         #region Fields
         /// <summary>
-        /// Singleton manager to manage equipage.
+        /// Singleton equipage model for referencing the master equipage data structure.
         /// </summary>
-        private ManagerModel manager;
+        private EquipageModel equipageModel;
 
         /// <summary>
         /// Observable collection of systems.
@@ -274,8 +273,8 @@ namespace LARI.ViewModels
 
             try
             {
-                this.manager.ReadFromXMLFile(EquipageFilePath);
-                ListToObservableCollection<AFSLSystem>(this.manager.AcquireEquipage().Fleet, Systems);
+                this.equipageModel.ReadFromFile(EquipageFilePath);
+                ListToObservableCollection<AFSLSystem>(this.equipageModel.AcquireEquipage().Fleet, Systems);
             }
             catch (FileNotFoundException)
             {
@@ -312,7 +311,7 @@ namespace LARI.ViewModels
 
             try
             {
-                this.manager.WriteToXMLFile(EquipageFilePath);
+                this.equipageModel.WriteToFile(EquipageFilePath);
             }
             catch (FileNotFoundException)
             {
@@ -544,7 +543,7 @@ namespace LARI.ViewModels
         /// </summary>
         private void initializePrivateFields()
         {
-            this.manager = ManagerModel.Instance;
+            this.equipageModel = EquipageModel.Instance;
             this.equipageFilePath = string.Empty;
             this.systems = new ObservableCollection<AFSLSystem>();
             this.selectedSystem = null;

@@ -107,7 +107,7 @@ namespace LARI.ViewModels
         /// </summary>
         private void acquireControllers()
         {
-            this.equipage = ManagerModel.Instance.AcquireEquipage();
+            this.equipage = EquipageModel.Instance.AcquireEquipage();
         }
 
         /// <summary>
