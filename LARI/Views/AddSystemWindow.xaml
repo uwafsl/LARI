@@ -27,9 +27,6 @@
                 <Label Content="Wing Type:" Width="100" />
                 <ComboBox x:Name="Wing_Type" SelectedItem="{Binding SelectedWingType}" Width="200" 
                           IsReadOnly="True" Background="White" BorderBrush="Gray">
-                    <ComboBox.DataContext>
-                        <Datatypes:WingTypes>Unspecified</Datatypes:WingTypes>
-                    </ComboBox.DataContext>
                     <Datatypes:WingTypes>Unspecified</Datatypes:WingTypes>
                     <Datatypes:WingTypes>FixedWing</Datatypes:WingTypes>
                     <Datatypes:WingTypes>Quad</Datatypes:WingTypes>

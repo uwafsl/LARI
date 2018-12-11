@@ -18,6 +18,7 @@ namespace LARI.ViewModels
         //07/25/18: Created
 
         #region Fields
+
         /// <summary>
         /// Singleton manager for equipage.
         /// </summary>
@@ -27,6 +28,21 @@ namespace LARI.ViewModels
         /// System to be added/edited.
         /// </summary>
         private AFSLSystem system;
+
+        /// <summary>
+        /// New/current system's name.
+        /// </summary>
+        private string name;
+
+        /// <summary>
+        /// New/current system's description.
+        /// </summary>
+        private string description;
+
+        /// <summary>
+        /// New/current system's wing type.
+        /// </summary>
+        private WingTypes wingType;
 
         /// <summary>
         /// Command to add new system or apply edits to currently selected system.
@@ -48,7 +64,10 @@ namespace LARI.ViewModels
         public AddSystemViewModel(ComponentTrackerViewModel vM)
         {
             componentTracker = vM;
-            this.startErrorHandling();
+            this.name = AFSLSystem.DefaultName;
+            this.description = AFSLSystem.DefaultDescription;
+            this.wingType = AFSLSystem.DefaultWingType;
+
             this.initializeOtherPrivateFields();
             this.createCommands();
             this.acquireControllers();
@@ -59,43 +78,42 @@ namespace LARI.ViewModels
 
         #region Properties
         /// <summary>
-        /// System name.
+        /// Name of system being added or edited.
         /// </summary>
         public string Name
         {
-            get { return this.system.Name; }
+            get { return name; }
             set
             {
-                this.system.Name = value;
+                name = value;
                 OnPropertyChanged("Name");
                 ApplySystemWindow.RaiseCanExecuteChanged();
             }
         }
 
         /// <summary>
-        /// System description.
+        /// Description for system being added or edited.
         /// </summary>
         public string Description
         {
-            get { return this.system.Description; }
+            get { return description; }
             set
             {
-                this.system.Description = value;
+                description = value;
                 OnPropertyChanged("Description");
                 ApplySystemWindow.RaiseCanExecuteChanged();
             }
         }
 
-        // TODO: This does not currently work. Combobox does not currently populate with wing types.
         /// <summary>
-        /// System wing type.
+        /// Wing type for system being added or edited.
         /// </summary>
         public WingTypes SelectedWingType
         {
-            get { return this.system.WingType; }
+            get { return wingType; }
             set
             {
-                this.system.WingType = value;
+                wingType = value;
                 OnPropertyChanged("SelectedWingType");
                 ApplySystemWindow.RaiseCanExecuteChanged();
             }
@@ -112,6 +130,7 @@ namespace LARI.ViewModels
         #endregion
 
         #region Public Methods
+
         /// <summary>
         /// Adds system to equipage. If editing component, removes old component and adds edited component.
         /// </summary>
@@ -121,7 +140,9 @@ namespace LARI.ViewModels
             ObservableCollection<AFSLSystem> tempSystem = this.componentTracker.Systems;
             try
             {
-                this.manager.AcquireEquipage().AddSystem(this.system);
+                AFSLSystem newSys = new AFSLSystem(this.name, this.description, wingType: this.wingType);
+                this.manager.AcquireEquipage().AddSystem(newSys);
+                this.componentTracker.UpdateSystemDisplay();
             }
             catch (System.Exception ex)
             {
@@ -139,7 +160,7 @@ namespace LARI.ViewModels
                     this.manager.AcquireEquipage().RemoveSystem(this.componentTracker.SelectedSystem.Name);
                 }
                 tempSystem.Add(this.system);
-                this.clearTextFields();
+                this.clearFields();
             }
         }
 
@@ -166,12 +187,13 @@ namespace LARI.ViewModels
         }
         
         /// <summary>
-        /// Clears all text boxes.
+        /// Clears text boxes and selected wing type.
         /// </summary>
-        private void clearTextFields()
+        private void clearFields()
         {
-            Name = String.Empty;
-            Description = String.Empty;
+            Name = AFSLSystem.DefaultName;
+            Description = AFSLSystem.DefaultDescription;
+            SelectedWingType = AFSLSystem.DefaultWingType;
             this.componentTracker.IsInEditMode = false;
         }
 
@@ -205,15 +227,10 @@ namespace LARI.ViewModels
         private void subscribeToEvents()
         {
             this.unsubscribeFromEvents();
-
-            //EXAMPLE
-            //this.airspaceController.AirspaceAdded += this.airspaceController_AirspaceAdded;
         }
 
         private void unsubscribeFromEvents()
-        {
-            //EXAMPLE
-            //this.airspaceController.AirspaceAdded -= this.airspaceController_AirspaceAdded;                
+        {            
         }
 
         /// <summary>

@@ -130,11 +130,6 @@ namespace LARI.ViewModels
         public ObservableCollection<AFSLSystem> Systems
         {
             get { return this.systems; }
-            set
-            {
-                this.systems = value;
-                OnPropertyChanged("Systems");
-            }
         }
 
         // TODO: Make this so that multiple selections can be saved in a list to allow for deleting multiple systems at a time.
@@ -274,7 +269,7 @@ namespace LARI.ViewModels
             try
             {
                 this.equipageModel.ReadFromFile(EquipageFilePath);
-                ListToObservableCollection<AFSLSystem>(this.equipageModel.AcquireEquipage().Fleet, Systems);
+                this.UpdateSystemDisplay();
             }
             catch (FileNotFoundException)
             {
@@ -316,16 +311,16 @@ namespace LARI.ViewModels
             catch (FileNotFoundException)
             {
                 MessageBox.Show("Selected database file was not found",
-                                "Component Tracker",
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Warning);
+                    "Component Tracker",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
                 return;
             }
 
             MessageBox.Show("Database saved to selected file path.",
-                                "Component Tracker",
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Information);
+                "Component Tracker",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information);
         }
 
         /// <summary>
@@ -336,6 +331,15 @@ namespace LARI.ViewModels
             IsInEditMode = false;
             AddSystemWindow addSystemWindow = new AddSystemWindow(this);
             addSystemWindow.ShowDialog();
+        }
+
+        /// <summary>
+        /// Updates the systems display.
+        /// </summary>
+        public void UpdateSystemDisplay()
+        {
+            this.systems = new ObservableCollection<AFSLSystem>(this.equipageModel.AcquireEquipage().Fleet);
+            OnPropertyChanged("Systems");
         }
 
         /// <summary>
@@ -469,18 +473,7 @@ namespace LARI.ViewModels
 
         #endregion
 
-        #region Private Methods (acquire/release controller, create/dispose commands, subscribe/unsubscribe events, start/stop error handling, initialize/dispose private fields)
-        private void ListToObservableCollection<T>(List<T> list, ObservableCollection<T> collection)
-        {
-            foreach (T item in list)
-            {
-                collection.Add(item);
-            }
-        }
-
-        #endregion
-
-        #region Private Methods (acquire/release controller, create/dispose commands, subscribe/unsubscribe events, start/stop error handling, initialize/dispose private fields)
+        #region Private Methods
        
         /// <summary>
         /// Aquire controllers.
@@ -545,7 +538,7 @@ namespace LARI.ViewModels
         {
             this.equipageModel = EquipageModel.Instance;
             this.equipageFilePath = string.Empty;
-            this.systems = new ObservableCollection<AFSLSystem>();
+            this.systems = new ObservableCollection<AFSLSystem>(this.equipageModel.AcquireEquipage().Fleet);
             this.selectedSystem = null;
             this.isInEditMode = false;
         }
