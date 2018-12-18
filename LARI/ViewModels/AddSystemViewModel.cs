@@ -5,6 +5,7 @@ using LARI.Models;
 using LARI.Utilities;
 using System.Windows.Input;
 using System.Windows;
+using System.Collections.ObjectModel;
 
 namespace LARI.ViewModels
 {
@@ -17,10 +18,11 @@ namespace LARI.ViewModels
         //07/25/18: Created
 
         #region Fields
+
         /// <summary>
         /// Singleton manager for equipage.
         /// </summary>
-        private ManagerModel manager;
+        private EquipageModel manager;
 
         /// <summary>
         /// System to be added/edited.
@@ -28,14 +30,29 @@ namespace LARI.ViewModels
         private AFSLSystem system;
 
         /// <summary>
+        /// New/current system's name.
+        /// </summary>
+        private string name;
+
+        /// <summary>
+        /// New/current system's description.
+        /// </summary>
+        private string description;
+
+        /// <summary>
+        /// New/current system's wing type.
+        /// </summary>
+        private WingTypes wingType;
+
+        /// <summary>
         /// Command to add new system or apply edits to currently selected system.
         /// </summary>
         private CommandHandler applySystemWindow;
 
         /// <summary>
-        /// Command to cancel adding/editing system and exit window.
+        /// ComponentTrackerViewModel which initialized current AddSystemWindow.
         /// </summary>
-        private CommandHandler cancelSystemWindow;
+        private ComponentTrackerViewModel componentTracker;
 
         #endregion
 
@@ -44,9 +61,13 @@ namespace LARI.ViewModels
         /// <summary>
         /// Default constructor
         /// </summary>
-        public AddSystemViewModel()
+        public AddSystemViewModel(ComponentTrackerViewModel vM)
         {
-            this.startErrorHandling();
+            componentTracker = vM;
+            this.name = AFSLSystem.DefaultName;
+            this.description = AFSLSystem.DefaultDescription;
+            this.wingType = AFSLSystem.DefaultWingType;
+
             this.initializeOtherPrivateFields();
             this.createCommands();
             this.acquireControllers();
@@ -57,43 +78,42 @@ namespace LARI.ViewModels
 
         #region Properties
         /// <summary>
-        /// System name.
+        /// Name of system being added or edited.
         /// </summary>
         public string Name
         {
-            get { return this.system.Name; }
+            get { return name; }
             set
             {
-                this.system.Name = value;
+                name = value;
                 OnPropertyChanged("Name");
                 ApplySystemWindow.RaiseCanExecuteChanged();
             }
         }
 
         /// <summary>
-        /// System description.
+        /// Description for system being added or edited.
         /// </summary>
         public string Description
         {
-            get { return this.system.Description; }
+            get { return description; }
             set
             {
-                this.system.Description = value;
+                description = value;
                 OnPropertyChanged("Description");
                 ApplySystemWindow.RaiseCanExecuteChanged();
             }
         }
 
-        // TODO: This does not currently work. Combobox does not currently populate with wing types.
         /// <summary>
-        /// System wing type.
+        /// Wing type for system being added or edited.
         /// </summary>
         public WingTypes SelectedWingType
         {
-            get { return this.system.WingType; }
+            get { return wingType; }
             set
             {
-                this.system.WingType = value;
+                wingType = value;
                 OnPropertyChanged("SelectedWingType");
                 ApplySystemWindow.RaiseCanExecuteChanged();
             }
@@ -107,24 +127,41 @@ namespace LARI.ViewModels
             get { return this.applySystemWindow; }
         }
 
-        /// <summary>
-        /// Gets cancel system command.
-        /// </summary>
-        public CommandHandler CancelSystemWindow
-        {
-            get { return this.cancelSystemWindow; }
-        }
-
         #endregion
 
         #region Public Methods
+
         /// <summary>
-        /// Adds system to equipage. 
+        /// Adds system to equipage. If editing component, removes old component and adds edited component.
         /// </summary>
         public void ApplySystem()
         {
-            this.manager.AcquireEquipage().AddSystem(this.system);
-            this.clearTextFields();
+            bool exception = false;
+            ObservableCollection<AFSLSystem> tempSystem = this.componentTracker.Systems;
+            try
+            {
+                AFSLSystem newSys = new AFSLSystem(this.name, this.description, wingType: this.wingType);
+                this.manager.AcquireEquipage().AddSystem(newSys);
+                this.componentTracker.UpdateSystemDisplay();
+            }
+            catch (System.Exception ex)
+            {
+                exception = true;
+                MessageBox.Show(ex.Message,
+                                   "Add System",
+                                   MessageBoxButton.OK,
+                                   MessageBoxImage.Warning);
+            }
+            if (exception == false)
+            {
+                if (this.componentTracker.IsInEditMode)
+                {
+                    tempSystem.Remove(this.componentTracker.SelectedSystem);
+                    this.manager.AcquireEquipage().RemoveSystem(this.componentTracker.SelectedSystem.Name);
+                }
+                tempSystem.Add(this.system);
+                this.clearFields();
+            }
         }
 
         /// <summary>
@@ -137,33 +174,27 @@ namespace LARI.ViewModels
             return true;
         }
 
-        /// <summary>
-        /// TODO: Closes window when cancel command is executed
-        /// </summary>
-        public void CancelSystem()
-        {
-
-        }
-
-        /// <summary>
-        /// Condition for whether "cancel" button is enabled. "Cancel" should always be enabled.
-        /// </summary>
-        /// <returns>Always returns true to allow user to cancel adding system, thus closing the window.</returns>
-        public bool CanCancelSystem()
-        {
-            return true;
-        }
-
         #endregion
 
         #region Private Methods (acquire/release controller, create/dispose commands, subscribe/unsubscribe events, start/stop error handling, initialize/dispose private fields)
-        /// <summary>
-        /// Clears all text boxes.
-        /// </summary>
-        private void clearTextFields()
+        private AFSLSystem initializeSystem()
         {
-            Name = String.Empty;
-            Description = String.Empty;
+            if (this.componentTracker.IsInEditMode)
+            {
+                return componentTracker.SelectedSystem;
+            }
+            return new AFSLSystem();
+        }
+        
+        /// <summary>
+        /// Clears text boxes and selected wing type.
+        /// </summary>
+        private void clearFields()
+        {
+            Name = AFSLSystem.DefaultName;
+            Description = AFSLSystem.DefaultDescription;
+            SelectedWingType = AFSLSystem.DefaultWingType;
+            this.componentTracker.IsInEditMode = false;
         }
 
         /// <summary>
@@ -171,7 +202,7 @@ namespace LARI.ViewModels
         /// </summary>
         private void acquireControllers()
         {
-            this.manager = ManagerModel.Instance;
+            this.manager = EquipageModel.Instance;
         }
 
         /// <summary>
@@ -187,7 +218,6 @@ namespace LARI.ViewModels
         private void createCommands()
         {
             this.applySystemWindow = new CommandHandler(ApplySystem, CanApplySystem());
-            this.cancelSystemWindow = new CommandHandler(CancelSystem, CanCancelSystem());
         }
 
         private void disposeCommands()
@@ -197,15 +227,10 @@ namespace LARI.ViewModels
         private void subscribeToEvents()
         {
             this.unsubscribeFromEvents();
-
-            //EXAMPLE
-            //this.airspaceController.AirspaceAdded += this.airspaceController_AirspaceAdded;
         }
 
         private void unsubscribeFromEvents()
-        {
-            //EXAMPLE
-            //this.airspaceController.AirspaceAdded -= this.airspaceController_AirspaceAdded;                
+        {            
         }
 
         /// <summary>
@@ -227,7 +252,7 @@ namespace LARI.ViewModels
         /// </summary>
         private void initializeOtherPrivateFields()
         {
-            this.system = new AFSLSystem();
+            this.system = initializeSystem();
         }
 
         /// <summary>

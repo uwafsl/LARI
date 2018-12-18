@@ -45,6 +45,12 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UWLARI">
+      <HintPath>..\..\..\AFSL\UWSDK\UWSDK\UWLARI\obj\Debug\UWLARI.dll</HintPath>
+    </Reference>
+    <Reference Include="UWWPF">
+      <HintPath>..\..\..\AFSL\UWSDK\UWSDK\UWWPF\obj\Debug\UWWPF.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -74,8 +80,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\ManagerModel.cs" />
-    <Compile Include="Models\ComponentTrackerModel.cs" />
+    <Compile Include="Models\EquipageModel.cs" />
     <Compile Include="Utilities\CommandHandler.cs" />
     <Compile Include="Views\AddComponentWindow.xaml.cs">
       <DependentUpon>AddComponentWindow.xaml</DependentUpon>

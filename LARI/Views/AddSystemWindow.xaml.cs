@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Windows.Controls;
+using LARI.ViewModels;
 
 namespace LARI.Views
 {
@@ -11,35 +12,17 @@ namespace LARI.Views
         //Version History:
         //07/25/18: Created
 
-        #region Fields
-
-        #endregion
-
         #region Constructor
 
         /// <summary>
-        /// Default constructor
+        /// Constructor that accepts a view model to assign Data Context to
         /// </summary>
-        public AddSystemWindow()
+        public AddSystemWindow(ComponentTrackerViewModel vM)
         {
             InitializeComponent();
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void Wing_Type_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
+            this.DataContext = new AddSystemViewModel(vM);
         }
 
         #endregion
-
-        private void Wing_Type_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }
