@@ -10,6 +10,7 @@
     <li>Indentation width is 4 spaces. Don't use tabs to indent. You can change settings in your IDE to accomodate this.</li>
     <li>If there is extra work to be done in your portion of the code, or some followup comment, please preceed it with "TODO", e.g. <code>//TODO: Refactor this code</code> or <code>//TODO: Complete this method</code>.
     <li>Do NOT commit the <code>LARI/LARI.csproj</code> file. If you do, I will personally revert your commit :)</li>
+    <li>Any method implemented on the backend should have a corresponding unit test.</li>
 </ul>
 
 <h3>Notes</h3>
