@@ -55,21 +55,22 @@
                             <Button Content="Delete" MinWidth="50" Background="#ff7070" Command="{Binding DeleteSystemCommand, UpdateSourceTrigger=PropertyChanged}" />
                         </StackPanel>
                     </Grid>
-                    <Grid>
-                        <DataGrid Name = "SystemsTable" IsReadOnly="True"
+                    <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" CanContentScroll="True" Height="150">
+                        <Grid>
+                            <DataGrid Name = "SystemsTable" IsReadOnly="True"
                                   ItemsSource="{Binding Systems, UpdateSourceTrigger=PropertyChanged}"
                                   SelectionMode="Single"
                                   SelectedItem="{Binding SelectedSystem}" SelectionUnit="FullRow"
                                   AlternatingRowBackground = "LightCyan" AlternationCount="2"
                                   AutoGenerateColumns="False">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header = "System" Binding ="{Binding Name}"/>
-                                <DataGridTextColumn Header = "Description" Binding="{Binding Description}"/>
-                                <DataGridTextColumn Header = "Wing Type" Binding="{Binding WingTypeName}"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </Grid>
-
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header = "System" Binding ="{Binding Name}"/>
+                                    <DataGridTextColumn Header = "Description" Binding="{Binding Description}"/>
+                                    <DataGridTextColumn Header = "Wing Type" Binding="{Binding WingTypeName}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </ScrollViewer>
                     <Grid x:Name="ComponentsHeader" Margin="0, 15, 0, 10">
                         <TextBlock Grid.Column="0" Text="Components" HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                    FontSize="16"/>
@@ -80,20 +81,22 @@
                             <Button Content="Delete" MinWidth="50" Background="#ff7070" Command="{Binding DeleteComponentCommand, UpdateSourceTrigger=PropertyChanged}"/>
                         </StackPanel>
                     </Grid>
-                    <Grid>
-                        <DataGrid Name = "ComponentsTable" ItemsSource="{Binding Components,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedComponents}" SelectionMode="Extended" SelectionUnit="FullRow" AlternatingRowBackground = "PaleGoldenrod" AlternationCount="2" AutoGenerateColumns="True" >
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header = "ID" Binding ="{Binding PartNumber}"/>
-                                <DataGridTextColumn Header = "Component" Binding="{Binding Component}"/>
-                                <DataGridTextColumn Header = "Date" Binding ="{Binding Time}" />
-                                <DataGridComboBoxColumn Header="Location" SelectedItemBinding="{Binding Location}" />
-                                <DataGridTextColumn Header="Notes" Binding="{Binding Notes}" />
-                                <DataGridTextColumn Header="History" Binding="{Binding History}" />
-                                <DataGridCheckBoxColumn Header="Active" Binding="{Binding Active}"/>
-                                <DataGridCheckBoxColumn Header="Crashed" Binding="{Binding hasCrashed}"/>
-                            </DataGrid.Columns>
-                        </DataGrid>                    
-                    </Grid>
+                    <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" CanContentScroll="True" Height="150">
+                        <Grid>
+                            <DataGrid Name = "ComponentsTable" ItemsSource="{Binding Components,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedComponents}" SelectionMode="Extended" SelectionUnit="FullRow" AlternatingRowBackground = "PaleGoldenrod" AlternationCount="2" AutoGenerateColumns="True" >
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header = "ID" Binding ="{Binding PartNumber}"/>
+                                    <DataGridTextColumn Header = "Component" Binding="{Binding Component}"/>
+                                    <DataGridTextColumn Header = "Date" Binding ="{Binding Time}" />
+                                    <DataGridComboBoxColumn Header="Location" SelectedItemBinding="{Binding Location}" />
+                                    <DataGridTextColumn Header="Notes" Binding="{Binding Notes}" />
+                                    <DataGridTextColumn Header="History" Binding="{Binding History}" />
+                                    <DataGridCheckBoxColumn Header="Active" Binding="{Binding Active}"/>
+                                    <DataGridCheckBoxColumn Header="Crashed" Binding="{Binding hasCrashed}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </ScrollViewer>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
