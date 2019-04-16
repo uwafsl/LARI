@@ -16,5 +16,10 @@ namespace LARI.Views
         {
 
         }
+
+        private void ComponentTrackerView_Loaded_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

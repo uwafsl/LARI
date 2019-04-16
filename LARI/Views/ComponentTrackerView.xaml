@@ -51,7 +51,7 @@
                                    FontSize="16"/>
                         <StackPanel x:Name="SystemsButtonsContainer" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                             <Button Content="Add" MinWidth="50" Command="{Binding AddSystemCommand}"/>
-                            <Button Content="Edit" MinWidth="50" Command="{Binding EditSystemCommand}"/>
+                            <Button Content="Edit" MinWidth="50" Command="{Binding EditSystemCommand}" Height="Auto" Click="Button_Click" Margin="0,0,0,0.4"/>
                             <Button Content="Delete" MinWidth="50" Background="#ff7070" Command="{Binding DeleteSystemCommand, UpdateSourceTrigger=PropertyChanged}" />
                         </StackPanel>
                     </Grid>
@@ -92,7 +92,7 @@
                                 <DataGridCheckBoxColumn Header="Active" Binding="{Binding Active}"/>
                                 <DataGridCheckBoxColumn Header="Crashed" Binding="{Binding hasCrashed}"/>
                             </DataGrid.Columns>
-                        </DataGrid>                    
+                        </DataGrid>
                     </Grid>
                 </StackPanel>
             </StackPanel>
