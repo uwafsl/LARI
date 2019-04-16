@@ -46,7 +46,7 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="UWLARI">
-      <HintPath>..\..\Users\16pat\Documents\Perforce\UWSDK\UWSDK\UWLARI\bin\Debug\UWLARI.dll</HintPath>
+      <HintPath>..\..\..\AFSL\UWSDK\UWSDK\UWLARI\obj\Debug\UWLARI.dll</HintPath>
     </Reference>
     <Reference Include="UWWPF">
       <HintPath>..\..\Users\16pat\Documents\Perforce\UWSDK\UWSDK\UWWPF\bin\Debug\UWWPF.dll</HintPath>
