@@ -37,10 +37,10 @@
         </Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
             <Grid Margin="0, 0, 10, 0">
-                <Button Content="Apply" Width="50" Command="{Binding Path=ApplySystemWindow}"/>
+                <Button Content="Apply" Width="50" IsCancel="True" Command="{Binding Path=ApplySystemWindow}"/>
             </Grid>
             <Grid Margin="0, 0, 15, 0">
-                <Button Content="Cancel" Width="50" IsCancel="True"/>
+                <Button Content="Cancel" Width="50" IsCancel="True" />
             </Grid>
         </StackPanel>
     </StackPanel>

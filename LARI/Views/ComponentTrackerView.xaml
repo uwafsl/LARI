@@ -6,8 +6,8 @@
              xmlns:ViewModels="clr-namespace:LARI.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Margin="10" Height="423">
-        <StackPanel x:Name="SystemsViewContainer" Height="378">
+    <Grid Margin="10" VerticalAlignment="Stretch">
+        <StackPanel x:Name="SystemsViewContainer" Margin="0,0,0,0">
             <Grid Margin="0, 10, 0, 10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.5*"/>
@@ -37,30 +37,29 @@
                     <Button Content="Save As" MinWidth="50" />
                 </StackPanel>
             </Grid>
-            <StackPanel x:Name="SystemAndComponentsContainer" Orientation="Vertical" Height="313" MinHeight="200" Margin="0, 0, 0, 10">
-                <StackPanel.Resources>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="Width" Value="50"/>
-                        <Setter Property="Height" Value="30"/>
-                        <Setter Property="Cursor" Value="Hand"/>
-                    </Style>
-                </StackPanel.Resources>
-                <Grid x:Name="SystemsHeader" Margin="0, 0, 0, 10">
+
+            <Grid x:Name="SystemComponentGrid" Height="305" VerticalAlignment="Stretch" >
+                <Grid.RowDefinitions>
+                    <RowDefinition MinHeight="46" />
+                    <RowDefinition Height="5" />
+                    <RowDefinition MinHeight="46" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" x:Name="SystemsHeader" Margin="0,10,0,0" VerticalAlignment="Top" Height="21">
                     <TextBlock Grid.Column="0" Text="Systems" HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                 FontSize="16"/>
                     <StackPanel x:Name="SystemsButtonsContainer" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button Content="Add" MinWidth="50" Command="{Binding AddSystemCommand}"/>
+                        <Button Content="Add" MinWidth="50" Command="{Binding AddSystemCommand}" Click="Button_Click"/>
                         <Button Content="Edit" MinWidth="50" Command="{Binding EditSystemCommand}"/>
                         <Button Content="Delete" MinWidth="50" Background="#ff7070" Command="{Binding DeleteSystemCommand, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
                 </Grid>
-                <Grid>
-                    <DataGrid Name = "SystemsTable" IsReadOnly="True"
+                <Grid Grid.Row="0" Margin="0,41,0,5" VerticalAlignment="Stretch">
+                    <DataGrid Name = "SystemsTable" IsReadOnly="True" 
                                 ItemsSource="{Binding Systems, UpdateSourceTrigger=PropertyChanged}"
-                                SelectionMode="Single"
+                                SelectionMode="Single" 
                                 SelectedItem="{Binding SelectedSystem}" SelectionUnit="FullRow"
                                 AlternatingRowBackground = "LightCyan" AlternationCount="2"
-                                AutoGenerateColumns="False">
+                                AutoGenerateColumns="False" VerticalContentAlignment="Stretch">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header = "System" Binding ="{Binding Name}"/>
                             <DataGridTextColumn Header = "Description" Binding="{Binding Description}"/>
@@ -68,7 +67,8 @@
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
-                <Grid x:Name="ComponentsHeader" Margin="0, 15, 0, 10">
+                <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" Margin="0,1" Background="#FF908F9C" Opacity="0.5" />
+                <Grid Grid.Row="2" x:Name="ComponentsHeader" Margin="0,5,0,-1" VerticalAlignment="Top" Height="21">
                     <TextBlock Grid.Column="0" Text="Components" HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                 FontSize="16"/>
                     <StackPanel Grid.Column="1" x:Name="ComponentsButtons" HorizontalAlignment="Right" Orientation="Horizontal">
@@ -78,8 +78,16 @@
                         <Button Content="Delete" MinWidth="50" Background="#ff7070" Command="{Binding DeleteComponentCommand, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
                 </Grid>
-                <Grid>
-                    <DataGrid Name = "ComponentsTable" ItemsSource="{Binding Components,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedComponents}" SelectionMode="Extended" SelectionUnit="FullRow" AlternatingRowBackground = "PaleGoldenrod" AlternationCount="2" AutoGenerateColumns="True" >
+                <Grid Grid.Row="2" Margin="0,41,0,5" VerticalAlignment="Stretch">
+                    <DataGrid Name = "ComponentsTable"                             
+                              ItemsSource="{Binding Components,UpdateSourceTrigger=PropertyChanged}" 
+                              SelectedItem="{Binding SelectedComponents}" 
+                              SelectionMode="Extended" 
+                              SelectionUnit="FullRow" 
+                              AlternatingRowBackground = "PaleGoldenrod" 
+                              AlternationCount="2" 
+                              AutoGenerateColumns="True" 
+                              Margin="0,0,0,0" SelectionChanged="ComponentsTable_SelectionChanged_1" VerticalContentAlignment="Stretch">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header = "ID" Binding ="{Binding PartNumber}"/>
                             <DataGridTextColumn Header = "Component" Binding="{Binding Component}"/>
@@ -92,8 +100,7 @@
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
-            </StackPanel>
+            </Grid>
         </StackPanel>
-        <GridSplitter HorizontalAlignment="Left" Height="4" Margin="0,232,0,0" VerticalAlignment="Top" Width="780" MinHeight="5" ResizeDirection="Rows" RenderTransformOrigin="0.5,0.5"/>
     </Grid>
 </UserControl>
