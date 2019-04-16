@@ -266,5 +266,10 @@ namespace LARI.Views
         {
 
         }
+
+        private void ComponentsTable_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
