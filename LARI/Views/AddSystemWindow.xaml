@@ -13,20 +13,20 @@
         <Grid Margin="0, 15, 0, 15">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Name:" Width="100" />
-                <TextBox Width="200" FontSize="14" Text="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Width="200" FontSize="14" Text="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="26" Margin="0,0,0,-0.4" VerticalAlignment="Bottom" TextChanged="TextBox_TextChanged_1"/>
             </StackPanel>
         </Grid>
         <Grid Margin="0, 15, 0, 15">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Description:" Width="100" />
-                <TextBox Width="300" Height="100" TextWrapping="Wrap" Text="{Binding Path=Description, Mode=TwoWay}"/>
+                <TextBox Width="300" Height="100" TextWrapping="Wrap" Text="{Binding Path=Description, Mode=TwoWay}" TextChanged="TextBox_TextChanged"/>
             </StackPanel>
         </Grid>
         <Grid Margin="0, 15, 0, 15">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Wing Type:" Width="100" />
                 <ComboBox x:Name="Wing_Type" SelectedItem="{Binding SelectedWingType}" Width="200" 
-                          IsReadOnly="True" Background="White" BorderBrush="Gray">
+                          IsReadOnly="True" Background="White" BorderBrush="Gray" SelectionChanged="Wing_Type_SelectionChanged">
                     <Datatypes:WingTypes>Unspecified</Datatypes:WingTypes>
                     <Datatypes:WingTypes>FixedWing</Datatypes:WingTypes>
                     <Datatypes:WingTypes>Quad</Datatypes:WingTypes>
@@ -37,7 +37,7 @@
         </Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
             <Grid Margin="0, 0, 10, 0">
-                <Button Content="Apply" Width="50" Command="{Binding Path=ApplySystemWindow}"/>
+                <Button Content="Apply" Width="50" Command="{Binding Path=ApplySystemWindow}" Margin="0,0,-0.8,0" Height="19" VerticalAlignment="Top"/>
             </Grid>
             <Grid Margin="0, 0, 15, 0">
                 <Button Content="Cancel" Width="50" IsCancel="True"/>

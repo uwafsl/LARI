@@ -24,5 +24,20 @@ namespace LARI.Views
         }
 
         #endregion
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Wing_Type_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

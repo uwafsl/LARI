@@ -359,8 +359,8 @@ namespace LARI.ViewModels
             if (CanEditOrDeleteSystem())
             {
                 IsInEditMode = true;
-                AddSystemWindow addSystemWindow = new AddSystemWindow(this);
-                addSystemWindow.ShowDialog();
+                EditSystemWindow editSystemWindow = new EditSystemWindow(this);
+                editSystemWindow.ShowDialog();
             }
             else
             {
