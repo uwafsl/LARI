@@ -13,7 +13,7 @@
 		<TabControl Height="auto">
             <TabItem Header="Component Tracker">
                 <Grid Background="#FFE5E5E5">
-                    <LARI:ComponentTrackerView />
+                    <LARI:ComponentTrackerView Loaded="ComponentTrackerView_Loaded_1" Margin="0,0,0.333,-0.333" />
                 </Grid>
             </TabItem>
         </TabControl>
