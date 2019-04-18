@@ -17,5 +17,6 @@
 <h3>Notes</h3>
 Please consult the <code>/Notes</code> if you need the following information:
 <ul>
-    <li>Setting Up Your Development Environment</li>
+    <li><a href="https://github.com/uwafsl/LARI/blob/master/Notes/setting_up_dev_env.md">Setting Up Your Development Environment</a></li>
+    <li><a href="https://github.com/uwafsl/LARI/blob/master/Notes/github_workflow.md">GitHub Workflow</a></li>
 </ul>
