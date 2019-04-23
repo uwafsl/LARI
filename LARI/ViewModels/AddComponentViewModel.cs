@@ -5,6 +5,7 @@ using LARI.Models;
 using LARI.Utilities;
 using System.Windows.Input;
 using System.Windows;
+using System.Collections.ObjectModel;
 
 namespace LARI.ViewModels
 {
@@ -18,7 +19,7 @@ namespace LARI.ViewModels
 
         #region Fields
 
-        private Equipage equipage = null;
+        private Equipage equipage;
         private CommandHandler applyComponentWindow;
         private CommandHandler cancelComponentWindow;
         private string description;
@@ -39,15 +40,15 @@ namespace LARI.ViewModels
         /// <summary>
         /// Default constructor
         /// </summary>
-        public AddComponentViewModel()
+        public AddComponentViewModel(ComponentTrackerViewModel vM)
         {
-            this.componentTracker = new ComponentTrackerViewModel();
+            this.componentTracker = vM;
             this.startErrorHandling();
             this.initializeOtherPrivateFields();
             this.createCommands();
+            Console.WriteLine("Yeet yeet");
             this.acquireControllers();
             this.subscribeToEvents();
-            this.applyComponentWindow = new CommandHandler(ApplyComponent, CanApplyComponent());
             this.cancelComponentWindow = new CommandHandler(CancelComponent, CanCancelComponent());
         }
 
@@ -80,11 +81,14 @@ namespace LARI.ViewModels
         public void ApplyComponent()
         {
             bool exception = false;
+            Console.WriteLine("yeet");
+            //ObservableCollection<Component> tempSystem = new ObservableCollection<Component>(this.equipage.Fleet[0].Components);
             try
             {
-                Component newComponent = new Component(this.description, equipage.Fleet.Count, this.flightTime, location, this.prevAirFrames, this.crashes, this.notes, isActive);
+                Component newComponent = new Component(this.description, this.equipage.Fleet.Count, this.flightTime, location, this.prevAirFrames, this.crashes, this.notes, isActive);
                 this.equipage.AddComponent(newComponent);
                 this.componentTracker.UpdateComponentDisplay();
+                Console.WriteLine(equipage.Fleet);
             }
             catch (System.Exception ex)
             {
@@ -101,7 +105,7 @@ namespace LARI.ViewModels
                     //equipage.RemoveComponent(partNumber);
                     //this.manager.AcquireEquipage().RemoveSystem(this.componentTracker.SelectedSystem.Name);
                 }
-                //this.clearFields();
+               // tempSystem.Add(this.system);
             }
         }
 
@@ -243,6 +247,7 @@ namespace LARI.ViewModels
 
         private void createCommands()
         {
+            this.applyComponentWindow = new CommandHandler(ApplyComponent, CanApplyComponent());
         }
 
         private void disposeCommands()

@@ -56,7 +56,7 @@
         </Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
             <Grid Margin="0, 0, 10, 0">
-                <Button Content="Apply" Width="50" Command="{Binding ApplyComponentWindow}"/>
+                <Button Content="Apply" Width="50" Command="{Binding Path=ApplyComponentWindow}"/>
             </Grid >
             <Grid Margin="0, 0, 10, 0">
                 <Button Content="Cancel" Width="50" IsCancel="True"/>

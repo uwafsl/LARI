@@ -415,7 +415,7 @@ namespace LARI.ViewModels
         /// </summary>
         public void AddComponent()
         {
-            AddComponentWindow addComponentWindow = new AddComponentWindow();
+            AddComponentWindow addComponentWindow = new AddComponentWindow(this);
             addComponentWindow.ShowDialog();
         }
 

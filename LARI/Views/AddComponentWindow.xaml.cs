@@ -22,9 +22,10 @@ namespace LARI.Views
         /// <summary>
         /// Default constructor
         /// </summary>
-        public AddComponentWindow()
+        public AddComponentWindow(ComponentTrackerViewModel vM)
         {
             InitializeComponent();
+            this.DataContext = new AddComponentViewModel(vM);
         }
 
         #endregion
