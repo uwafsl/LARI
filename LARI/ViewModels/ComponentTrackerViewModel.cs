@@ -361,13 +361,17 @@ namespace LARI.ViewModels
         /// </summary>
         public void UpdateComponentsDisplay()
         {
+            List<Component> listComponent = new List<Component>();
             foreach (AFSLSystem system in systems)
             {
-                this.components = new ObservableCollection<Component>(system.Components);
-                
-                OnPropertyChanged("Components");
+                foreach (Component temp in system.Components)
+                {
+                    listComponent.Add(temp);
+                    
+                }
             }
-            
+            this.components = new ObservableCollection<Component>(listComponent);
+            OnPropertyChanged("Components");
         }
 
         /// <summary>
