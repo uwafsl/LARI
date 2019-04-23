@@ -41,7 +41,7 @@
             </StackPanel>
         </Grid>
 
-    <Grid Grid.Row="1" x:Name="SystemComponentGrid">
+        <Grid Grid.Row="1" x:Name="SystemComponentGrid">
             <Grid.RowDefinitions>
                 <RowDefinition MinHeight="46" />
                 <RowDefinition Height="5" />
@@ -106,3 +106,4 @@
         </Grid>
     </Grid>
 </UserControl>
+    

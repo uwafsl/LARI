@@ -25,6 +25,8 @@ namespace LARI.ViewModels
         /// </summary>
         private ObservableCollection<AFSLSystem> systems;
 
+        private ObservableCollection<AFSLSystem> components;
+
         /// <summary>
         /// List of selected systems by user.
         /// </summary>
@@ -342,6 +344,12 @@ namespace LARI.ViewModels
             OnPropertyChanged("Systems");
         }
 
+        public void UpdateComponentDisplay()
+        {
+            //this.components = new ObservableCollection<Component>(this.equipageModel.AcquireEquipage().Fleet[0].Components);
+            OnPropertyChanged("Components");
+        }
+
         /// <summary>
         /// Determines whether the "Add" system button is enabled.
         /// </summary>
@@ -539,6 +547,7 @@ namespace LARI.ViewModels
             this.equipageModel = EquipageModel.Instance;
             this.equipageFilePath = string.Empty;
             this.systems = new ObservableCollection<AFSLSystem>(this.equipageModel.AcquireEquipage().Fleet);
+            //this.components = new 
             this.selectedSystem = null;
             this.isInEditMode = false;
         }

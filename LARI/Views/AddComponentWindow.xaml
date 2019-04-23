@@ -7,32 +7,31 @@
              xmlns:ViewModels="clr-namespace:LARI.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" Width="500" MaxHeight="450">
-    <Window.DataContext>
-        <ViewModels:AddComponentViewModel />
-    </Window.DataContext>
+
     <StackPanel x:Name="AddComponent" Orientation="Vertical">
 
         <Grid Margin="20, 15, 0, 15">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Description:" Width="100" />
-                <TextBox Width="300" Height="25" SpellCheck.IsEnabled="True" FontSize="14" />
+                <TextBox Width="300" Text="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="25" SpellCheck.IsEnabled="True" FontSize="14" />
             </StackPanel>
         </Grid>
         <Grid Margin="20, 5, 0, 15">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Date:" Width="50" />
-                <DatePicker Width="105" Height="25" Margin="0,6"/>
+                <DatePicker Width="105" SelectedDate="{Binding Path=Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="25" Margin="0,6"/>
                 <Label Content="           Location:" Width="95" />
-                <TextBox Width="150" Height="25" FontSize="14"/>
+                <TextBox Width="150" Text="{Binding Path=Location, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="25" FontSize="14" TextChanged="TextBox_TextChanged_1"/>
                 
             </StackPanel>
         </Grid>
         <Grid Margin="20, 5, 0, 15">
             <StackPanel Orientation="Horizontal">
                 <Label Content=" Flight Time:" Width="75" />
-                <TextBox Width="150" Height="25" FontSize="14"/>
-                <Label Content=" Active?" Width="54" />
+                <TextBox Width="150" Text="{Binding Path=FlightTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="25" FontSize="14"/>
+                <Label Content=" Active?"  Width="54" />
                 <Grid Margin="0, 7, 0, 15">
+                    <CheckBox  IsChecked="{Binding IsActive, UpdateSourceTrigger=PropertyChanged}"   />
                     <CheckBox/>
                 </Grid>
             </StackPanel>
@@ -40,19 +39,19 @@
         <Grid Margin="20, 5, 0, 15">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Previous Airframes:" Width="115" />
-                <TextBox Width="200" Height="50" SpellCheck.IsEnabled="True" Text="Airframe (Removed  mm/dd/yy)" TextChanged="TextBox_TextChanged" TextWrapping="Wrap" />
+                <TextBox Width="200" Height="50" SpellCheck.IsEnabled="True" Text="{Binding Path=PrevAirFrames, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="TextBox_TextChanged" TextWrapping="Wrap" />
             </StackPanel>
         </Grid>
         <Grid Margin="20, 5, 0, 15">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Crashes:" Width="115" />
-                <TextBox Width="200" Height="50" SpellCheck.IsEnabled="True" Text="Severe - Airframe mm/dd/yy" TextChanged="TextBox_TextChanged" TextWrapping="Wrap" />
+                <TextBox Width="200" Height="50" SpellCheck.IsEnabled="True" Text="{Binding Path=Crashes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="TextBox_TextChanged" TextWrapping="Wrap" />
             </StackPanel>
         </Grid>
         <Grid Margin="20, 5, 0, 15">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Notes:" Width="115" />
-                <TextBox Width="200" Height="50" SpellCheck.IsEnabled="True" TextWrapping="Wrap"/>
+                <TextBox Width="200" Text="{Binding Path=Notes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="50" SpellCheck.IsEnabled="True" TextWrapping="Wrap"/>
             </StackPanel>
         </Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
@@ -60,7 +59,7 @@
                 <Button Content="Apply" Width="50" Command="{Binding ApplyComponentWindow}"/>
             </Grid >
             <Grid Margin="0, 0, 10, 0">
-                <Button Content="Cancel" Width="50" Command="{Binding CancelComponentWindow}"/>
+                <Button Content="Cancel" Width="50" IsCancel="True"/>
             </Grid >
         </StackPanel>
     </StackPanel>

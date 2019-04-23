@@ -19,8 +19,18 @@ namespace LARI.ViewModels
         #region Fields
 
         private Equipage equipage = null;
-        private ICommand applyComponentWindow;
-        private ICommand cancelComponentWindow;
+        private CommandHandler applyComponentWindow;
+        private CommandHandler cancelComponentWindow;
+        private string description;
+        private string date;
+        private double flightTime;
+        private string prevAirFrames;
+        private string crashes;
+        private string notes;
+        //int partNumber = -1;
+        string location = "default location";
+        Boolean isActive = true;
+        private ComponentTrackerViewModel componentTracker;
 
         #endregion
 
@@ -31,6 +41,7 @@ namespace LARI.ViewModels
         /// </summary>
         public AddComponentViewModel()
         {
+            this.componentTracker = new ComponentTrackerViewModel();
             this.startErrorHandling();
             this.initializeOtherPrivateFields();
             this.createCommands();
@@ -46,7 +57,7 @@ namespace LARI.ViewModels
         /// <summary>
         /// Gets apply system command.
         /// </summary>
-        public ICommand ApplyComponentWindow
+        public CommandHandler ApplyComponentWindow
         {
             get { return this.applyComponentWindow; }
         }
@@ -68,7 +79,30 @@ namespace LARI.ViewModels
         /// </summary>
         public void ApplyComponent()
         {
-
+            bool exception = false;
+            try
+            {
+                Component newComponent = new Component(this.description, equipage.Fleet.Count, this.flightTime, location, this.prevAirFrames, this.crashes, this.notes, isActive);
+                this.equipage.AddComponent(newComponent);
+                this.componentTracker.UpdateComponentDisplay();
+            }
+            catch (System.Exception ex)
+            {
+                exception = true;
+                MessageBox.Show(ex.Message,
+                                   "Add Component",
+                                   MessageBoxButton.OK,
+                                   MessageBoxImage.Warning);
+            }
+            if (exception == false)
+            {
+                if (this.componentTracker.IsInEditMode)
+                {
+                    //equipage.RemoveComponent(partNumber);
+                    //this.manager.AcquireEquipage().RemoveSystem(this.componentTracker.SelectedSystem.Name);
+                }
+                //this.clearFields();
+            }
         }
 
         /// <summary>
@@ -98,6 +132,96 @@ namespace LARI.ViewModels
             return true;
         }
 
+        /// <summary>
+        /// Description of component being added or edited.
+        /// </summary>
+        public string Description
+        {
+            get { return description; }
+            set
+            {
+                description = value;
+                OnPropertyChanged("Description");
+                ApplyComponentWindow.RaiseCanExecuteChanged();
+            }
+        }
+
+        public string Date
+        {
+            get { return date; }
+            set
+            {
+                date = value;
+                OnPropertyChanged("Date");
+                ApplyComponentWindow.RaiseCanExecuteChanged();
+            }
+        }
+
+        public string Location
+        {
+            get { return location; }
+            set
+            {
+                location = value;
+                OnPropertyChanged("PrevAirFrames");
+                ApplyComponentWindow.RaiseCanExecuteChanged();
+            }
+        }
+
+        public Boolean IsActive
+        {
+            get { return isActive; }
+            set
+            {
+                isActive = value;
+                OnPropertyChanged("IsActive");
+                ApplyComponentWindow.RaiseCanExecuteChanged();
+            }
+        }
+
+        public double FlightTime
+        {
+            get { return flightTime; }
+            set
+            {
+                flightTime = value;
+                OnPropertyChanged("FlightTime");
+                ApplyComponentWindow.RaiseCanExecuteChanged();
+            }
+        }
+
+        public string PrevAirFrames
+        {
+            get { return prevAirFrames; }
+            set
+            {
+                prevAirFrames = value;
+                OnPropertyChanged("PrevAirFrames");
+                ApplyComponentWindow.RaiseCanExecuteChanged();
+            }
+        }
+
+        public string Crashes
+        {
+            get { return prevAirFrames; }
+            set
+            {
+                crashes = value;
+                OnPropertyChanged("Crashes");
+                ApplyComponentWindow.RaiseCanExecuteChanged();
+            }
+        }
+
+        public string Notes
+        {
+            get { return notes; }
+            set
+            {
+                notes = value;
+                OnPropertyChanged("Notes");
+                ApplyComponentWindow.RaiseCanExecuteChanged();
+            }
+        }
         #endregion
 
         #region Private Methods (acquire/release controller, create/dispose commands, subscribe/unsubscribe events, start/stop error handling, initialize/dispose private fields)
