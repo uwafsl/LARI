@@ -26,6 +26,11 @@ namespace LARI.ViewModels
         private ObservableCollection<AFSLSystem> systems;
 
         /// <summary>
+        /// Observable collection of components.
+        /// </summary>
+        private ObservableCollection<Component> components;
+
+        /// <summary>
         /// List of selected systems by user.
         /// </summary>
         private AFSLSystem selectedSystem;
@@ -130,6 +135,14 @@ namespace LARI.ViewModels
         public ObservableCollection<AFSLSystem> Systems
         {
             get { return this.systems; }
+        }
+
+        /// <summary>
+        /// Collection of components available to user.
+        /// </summary>
+        public ObservableCollection<Component> Components
+        {
+            get { return this.components; }
         }
 
         // TODO: Make this so that multiple selections can be saved in a list to allow for deleting multiple systems at a time.
@@ -270,6 +283,7 @@ namespace LARI.ViewModels
             {
                 this.equipageModel.ReadFromFile(EquipageFilePath);
                 this.UpdateSystemDisplay();
+                this.UpdateComponentsDisplay();
             }
             catch (FileNotFoundException)
             {
@@ -340,6 +354,20 @@ namespace LARI.ViewModels
         {
             this.systems = new ObservableCollection<AFSLSystem>(this.equipageModel.AcquireEquipage().Fleet);
             OnPropertyChanged("Systems");
+        }
+
+        /// <summary>
+        /// Updates the components display
+        /// </summary>
+        public void UpdateComponentsDisplay()
+        {
+            foreach (AFSLSystem system in systems)
+            {
+                this.components = new ObservableCollection<Component>(system.Components);
+                
+                OnPropertyChanged("Components");
+            }
+            
         }
 
         /// <summary>
