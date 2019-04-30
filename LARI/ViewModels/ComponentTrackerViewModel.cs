@@ -30,9 +30,15 @@ namespace LARI.ViewModels
         /// </summary>
         private AFSLSystem selectedSystem;
 
-        public AddSystemWindow addSystemWindow;
+        /// <summary>
+        /// Add system window view object.
+        /// </summary>
+        private AddSystemWindow addSystemWindow;
 
-        public EditSystemWindow editSystemWindow;
+        /// <summary>
+        /// Edit system window view object.
+        /// </summary>
+        private EditSystemWindow editSystemWindow;
 
         #region Commands
         /// <summary>
@@ -229,6 +235,16 @@ namespace LARI.ViewModels
         {
             get { return this.isInEditMode; }
             set { this.isInEditMode = value; }
+        }
+
+        public AddSystemWindow AddSystemWindow
+        {
+            get { return this.addSystemWindow;  }
+        }
+
+        public EditSystemWindow EditSystemWindow
+        {
+            get { return this.editSystemWindow; }
         }
 
         #endregion

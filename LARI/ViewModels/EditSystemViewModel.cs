@@ -162,7 +162,7 @@ namespace LARI.ViewModels
                 tempSystem.Add(this.system);
                 this.componentTracker.UpdateSystemDisplay();
                 this.clearFields();
-                componentTracker.editSystemWindow.Close();
+                componentTracker.EditSystemWindow.Close();
             }
         }
 
