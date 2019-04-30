@@ -231,17 +231,26 @@ namespace LARI.ViewModels
             get { return this.deleteComponentCommand; }
         }
 
+        /// <summary>
+        /// Gets is in edit mode
+        /// </summary>
         public bool IsInEditMode
         {
             get { return this.isInEditMode; }
             set { this.isInEditMode = value; }
         }
 
+        /// <summary>
+        /// Gets add system window object
+        /// </summary>
         public AddSystemWindow AddSystemWindow
         {
             get { return this.addSystemWindow;  }
         }
 
+        /// <summary>
+        /// Gets edit system window object
+        /// </summary>
         public EditSystemWindow EditSystemWindow
         {
             get { return this.editSystemWindow; }
