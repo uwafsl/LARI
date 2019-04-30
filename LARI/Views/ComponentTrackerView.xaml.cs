@@ -271,5 +271,10 @@ namespace LARI.Views
         {
 
         }
+
+        private void DataGridRow_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            this.viewModel.ShowComponents();
+        }
     }
 }

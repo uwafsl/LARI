@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
+using System.Windows.Input;
 using System.Xml;
 using LARI.Models;
 using LARI.Utilities;
@@ -85,6 +86,8 @@ namespace LARI.ViewModels
         /// Command to delete currently selected system.
         /// </summary>
         private CommandHandler deleteComponentCommand;
+
+        private CommandHandler showComponentsCommand;
 
         /// <summary>
         /// Boolean to communicate with AddSystem/Component View about if edit has been clicked.
@@ -229,6 +232,11 @@ namespace LARI.ViewModels
         public CommandHandler DeleteComponentCommand
         {
             get { return this.deleteComponentCommand; }
+        }
+
+        public CommandHandler ShowComponentsCommand
+        {
+            get { return this.showComponentsCommand;  }
         }
 
         /// <summary>
@@ -499,10 +507,24 @@ namespace LARI.ViewModels
             }
         }
 
+        public void ShowComponents()
+        {
+            AFSLSystem sys = SelectedSystem;
+            List<Component> selectedComponents = sys.Components;
+            if (selectedComponents != null)
+            {
+                Console.WriteLine("---" + sys.Name + "---");
+                foreach (Component c in selectedComponents)
+                {
+                    Console.WriteLine(c.Description);
+                }
+            }
+        }
+
         #endregion
 
         #region Private Methods
-       
+
         /// <summary>
         /// Aquire controllers.
         /// </summary>
@@ -531,6 +553,7 @@ namespace LARI.ViewModels
             addComponentCommand = new CommandHandler(AddComponent, CanAddComponent());
             editComponentCommand = new CommandHandler(EditComponent, true);
             deleteComponentCommand = new CommandHandler(DeleteComponent, true);
+            showComponentsCommand = new CommandHandler(ShowComponents, true);
         }
 
         private void disposeCommands()
