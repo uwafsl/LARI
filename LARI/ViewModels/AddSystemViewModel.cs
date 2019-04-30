@@ -161,6 +161,7 @@ namespace LARI.ViewModels
                 }
                 tempSystem.Add(this.system);
                 this.clearFields();
+                componentTracker.AddSystemWindow.Close();
             }
         }
 

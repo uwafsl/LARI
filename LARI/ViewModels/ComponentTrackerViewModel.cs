@@ -30,6 +30,16 @@ namespace LARI.ViewModels
         /// </summary>
         private AFSLSystem selectedSystem;
 
+        /// <summary>
+        /// Add system window view object.
+        /// </summary>
+        private AddSystemWindow addSystemWindow;
+
+        /// <summary>
+        /// Edit system window view object.
+        /// </summary>
+        private EditSystemWindow editSystemWindow;
+
         #region Commands
         /// <summary>
         /// Command to browse for equipage file path.
@@ -221,10 +231,29 @@ namespace LARI.ViewModels
             get { return this.deleteComponentCommand; }
         }
 
+        /// <summary>
+        /// Gets is in edit mode
+        /// </summary>
         public bool IsInEditMode
         {
             get { return this.isInEditMode; }
             set { this.isInEditMode = value; }
+        }
+
+        /// <summary>
+        /// Gets add system window object
+        /// </summary>
+        public AddSystemWindow AddSystemWindow
+        {
+            get { return this.addSystemWindow;  }
+        }
+
+        /// <summary>
+        /// Gets edit system window object
+        /// </summary>
+        public EditSystemWindow EditSystemWindow
+        {
+            get { return this.editSystemWindow; }
         }
 
         #endregion
@@ -322,14 +351,13 @@ namespace LARI.ViewModels
                 MessageBoxButton.OK,
                 MessageBoxImage.Information);
         }
-
         /// <summary>
         /// Opens window to allow user to add new system.
         /// </summary>
         public void AddSystem()
         {
             IsInEditMode = false;
-            AddSystemWindow addSystemWindow = new AddSystemWindow(this);
+            addSystemWindow = new AddSystemWindow(this);
             addSystemWindow.ShowDialog();
         }
 
@@ -359,7 +387,7 @@ namespace LARI.ViewModels
             if (CanEditOrDeleteSystem())
             {
                 IsInEditMode = true;
-                EditSystemWindow editSystemWindow = new EditSystemWindow(this);
+                editSystemWindow = new EditSystemWindow(this);
                 editSystemWindow.ShowDialog();
             }
             else
