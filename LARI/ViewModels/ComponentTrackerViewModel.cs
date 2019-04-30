@@ -30,6 +30,10 @@ namespace LARI.ViewModels
         /// </summary>
         private AFSLSystem selectedSystem;
 
+        public AddSystemWindow addSystemWindow;
+
+        public EditSystemWindow editSystemWindow;
+
         #region Commands
         /// <summary>
         /// Command to browse for equipage file path.
@@ -322,14 +326,13 @@ namespace LARI.ViewModels
                 MessageBoxButton.OK,
                 MessageBoxImage.Information);
         }
-
         /// <summary>
         /// Opens window to allow user to add new system.
         /// </summary>
         public void AddSystem()
         {
             IsInEditMode = false;
-            AddSystemWindow addSystemWindow = new AddSystemWindow(this);
+            addSystemWindow = new AddSystemWindow(this);
             addSystemWindow.ShowDialog();
         }
 
@@ -359,7 +362,7 @@ namespace LARI.ViewModels
             if (CanEditOrDeleteSystem())
             {
                 IsInEditMode = true;
-                EditSystemWindow editSystemWindow = new EditSystemWindow(this);
+                editSystemWindow = new EditSystemWindow(this);
                 editSystemWindow.ShowDialog();
             }
             else

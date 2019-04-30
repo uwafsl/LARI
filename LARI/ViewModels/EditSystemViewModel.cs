@@ -10,7 +10,7 @@ using System.Collections.ObjectModel;
 namespace LARI.ViewModels
 {
     /// <summary>
-    /// View model for AddSystemWindow.
+    /// View model for EditSystemWindow.
     /// </summary>
     public class EditSystemViewModel : ViewModelBaseUW, IDisposable
     {
@@ -162,6 +162,7 @@ namespace LARI.ViewModels
                 tempSystem.Add(this.system);
                 this.componentTracker.UpdateSystemDisplay();
                 this.clearFields();
+                componentTracker.editSystemWindow.Close();
             }
         }
 
