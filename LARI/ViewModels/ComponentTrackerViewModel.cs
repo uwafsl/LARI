@@ -510,11 +510,11 @@ namespace LARI.ViewModels
         public void ShowComponents()
         {
             AFSLSystem sys = SelectedSystem;
-            List<Component> selectedComponents = sys.Components;
-            if (selectedComponents != null)
+            List<Component> Components = sys.Components;
+            if (Components != null)
             {
                 Console.WriteLine("---" + sys.Name + "---");
-                foreach (Component c in selectedComponents)
+                foreach (Component c in Components)
                 {
                     Console.WriteLine(c.Description);
                 }
