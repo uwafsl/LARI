@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Controls;
 using System.Xml;
 using LARI.Models;
 using LARI.Utilities;
@@ -25,6 +27,11 @@ namespace LARI.ViewModels
         /// Observable collection of systems.
         /// </summary>
         private ObservableCollection<AFSLSystem> systems;
+
+        /// <summary>
+        /// List of components.
+        /// </summary>
+        private List<Component> components;
 
         /// <summary>
         /// List of selected systems by user.
@@ -507,17 +514,19 @@ namespace LARI.ViewModels
             }
         }
 
-        public void ShowComponents()
+        public void ShowComponents(DataGrid ComponentsTable)
         {
-            AFSLSystem sys = SelectedSystem;
-            List<Component> Components = sys.Components;
-            if (Components != null)
+            components = SelectedSystem.Components;
+            if (components != null)
             {
-                Console.WriteLine("---" + sys.Name + "---");
-                foreach (Component c in Components)
+                ComponentsTable.Items.Clear();
+                Console.WriteLine("---" + SelectedSystem.Name + "---");
+                foreach (Component c in components)
                 {
                     Console.WriteLine(c.Description);
+                    ComponentsTable.Items.Add(c.PartNumber);
                 }
+
             }
         }
 
@@ -553,7 +562,6 @@ namespace LARI.ViewModels
             addComponentCommand = new CommandHandler(AddComponent, CanAddComponent());
             editComponentCommand = new CommandHandler(EditComponent, true);
             deleteComponentCommand = new CommandHandler(DeleteComponent, true);
-            showComponentsCommand = new CommandHandler(ShowComponents, true);
         }
 
         private void disposeCommands()
