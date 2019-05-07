@@ -25,7 +25,7 @@ namespace LARI.ViewModels
         /// </summary>
         private ObservableCollection<AFSLSystem> systems;
 
-        private ObservableCollection<AFSLSystem> components;
+        private ObservableCollection<Component> components;
 
         /// <summary>
         /// List of selected systems by user.
@@ -132,6 +132,11 @@ namespace LARI.ViewModels
         public ObservableCollection<AFSLSystem> Systems
         {
             get { return this.systems; }
+        }
+
+        public ObservableCollection<Component> Components
+        {
+            get { return this.components; }
         }
 
         // TODO: Make this so that multiple selections can be saved in a list to allow for deleting multiple systems at a time.
@@ -346,7 +351,7 @@ namespace LARI.ViewModels
 
         public void UpdateComponentDisplay()
         {
-            //this.components = new ObservableCollection<Component>(this.equipageModel.AcquireEquipage().Fleet[0].Components);
+            this.components = new ObservableCollection<Component>(this.equipageModel.AcquireEquipage().Fleet[0].Components);
             OnPropertyChanged("Components");
         }
 

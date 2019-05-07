@@ -23,13 +23,13 @@ namespace LARI.ViewModels
         private CommandHandler applyComponentWindow;
         private CommandHandler cancelComponentWindow;
         private string description;
-        private string date;
+        private DateTime date;
         private double flightTime;
         private string prevAirFrames;
         private string crashes;
         private string notes;
-        //int partNumber = -1;
-        string location = "default location";
+        // int partNumber;
+        string location = "Inventory"; // used to be default location
         Boolean isActive = true;
         private ComponentTrackerViewModel componentTracker;
 
@@ -46,7 +46,6 @@ namespace LARI.ViewModels
             this.startErrorHandling();
             this.initializeOtherPrivateFields();
             this.createCommands();
-            Console.WriteLine("Yeet yeet");
             this.acquireControllers();
             this.subscribeToEvents();
             this.cancelComponentWindow = new CommandHandler(CancelComponent, CanCancelComponent());
@@ -81,13 +80,30 @@ namespace LARI.ViewModels
         public void ApplyComponent()
         {
             bool exception = false;
-            Console.WriteLine("yeet");
+            Console.WriteLine("---Original System---");
+            foreach (AFSLSystem sys in this.equipage.Fleet)
+            {
+                Console.WriteLine("System :" +  sys.Name);
+                ListComponents(sys);
+            }
+
+            AFSLSystem inventory = GetSystem(Equipage.InventorySystem);
+            Console.WriteLine("---Inventory---");
+            ListComponents(inventory);
+
+            AFSLSystem specifiedSys = GetSystem(location);
+            Console.WriteLine("---" + location + "---");
+            ListComponents(specifiedSys);
+
             //ObservableCollection<Component> tempSystem = new ObservableCollection<Component>(this.equipage.Fleet[0].Components);
+            Random rand = new Random();
             try
             {
-                Component newComponent = new Component(this.description, this.equipage.Fleet.Count, this.flightTime, location, this.prevAirFrames, this.crashes, this.notes, isActive);
-                this.equipage.AddComponent(newComponent);
-                this.componentTracker.UpdateComponentDisplay();
+                // TODO: Add to both inventory and components. There is something wrong on the backend, so this is blocked for now.
+                Component newComponent = new Component(this.description, rand.Next(), this.flightTime, location, this.prevAirFrames, this.crashes, this.notes, isActive);
+                // this.equipage.AddComponent(newComponent);
+                this.equipage.AddComponent(newComponent, location);
+                // this.componentTracker.UpdateComponentDisplay();
                 Console.WriteLine(equipage.Fleet);
             }
             catch (System.Exception ex)
@@ -106,6 +122,37 @@ namespace LARI.ViewModels
                     //this.manager.AcquireEquipage().RemoveSystem(this.componentTracker.SelectedSystem.Name);
                 }
                // tempSystem.Add(this.system);
+            }
+            Console.WriteLine("---Modified System---");
+            foreach (AFSLSystem sys in this.equipage.Fleet)
+            {
+                Console.WriteLine("System :" + sys.Name);
+                ListComponents(sys);
+            }
+        }
+
+        /// <summary>
+        /// Private helper method to retrieve a system from the current fleet
+        /// </summary>
+        /// <param name="systemName"></param>
+        /// <returns></returns>
+        private AFSLSystem GetSystem(string systemName)
+        {
+            for (int i = 0; i < this.equipage.NumVehicles; i++)
+            {
+                if (this.equipage.Fleet[i].Name.Equals(systemName))
+                {
+                    return this.equipage.Fleet[i];
+                }
+            }
+            return null;
+        }
+
+        private void ListComponents(AFSLSystem system)
+        {
+            foreach (Component c in system.Components)
+            {
+                Console.WriteLine("\tComponent: " + c.PartNumber + ": " + c.Description);
             }
         }
 
@@ -150,7 +197,7 @@ namespace LARI.ViewModels
             }
         }
 
-        public string Date
+        public DateTime Date
         {
             get { return date; }
             set
