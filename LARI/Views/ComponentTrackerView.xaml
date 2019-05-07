@@ -83,7 +83,7 @@
             </Grid>
             <Grid Grid.Row="2" Margin="0,31,0,5" VerticalAlignment="Stretch">
                 <DataGrid Name = "ComponentsTable"                             
-                            ItemsSource="{Binding Components,UpdateSourceTrigger=PropertyChanged}" 
+                            ItemsSource="{Binding Components,UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" 
                             SelectedItem="{Binding SelectedComponents}" 
                             SelectionMode="Extended" 
                             SelectionUnit="FullRow" 
