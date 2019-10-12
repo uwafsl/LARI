@@ -22,19 +22,19 @@
                 <TextBox Width="300" Height="100" TextWrapping="Wrap" Text="{Binding Path=Description, Mode=TwoWay}" TextChanged="TextBox_TextChanged"/>
             </StackPanel>
         </Grid>
-        <Grid Margin="0, 15, 0, 15">
+        <!--<Grid Margin="0, 15, 0, 15">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Wing Type:" Width="100" />
                 <ComboBox x:Name="Wing_Type" SelectedItem="{Binding SelectedWingType}" Width="200" 
                           IsReadOnly="True" Background="White" BorderBrush="Gray" SelectionChanged="Wing_Type_SelectionChanged">
-                    <Datatypes:WingTypes>Unspecified</Datatypes:WingTypes>
-                    <Datatypes:WingTypes>FixedWing</Datatypes:WingTypes>
+                    --><!--<Datatypes:WingTypes>Unspecified</Datatypes:WingTypes>-->
+                    <!--<Datatypes:WingTypes>FixedWing</Datatypes:WingTypes>
                     <Datatypes:WingTypes>Quad</Datatypes:WingTypes>
                     <Datatypes:WingTypes>Octo</Datatypes:WingTypes>
-                    <Datatypes:WingTypes>None</Datatypes:WingTypes>
+                    <Datatypes:WingTypes>None</Datatypes:WingTypes>--><!--
                 </ComboBox>
             </StackPanel>
-        </Grid>
+        </Grid>-->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
             <Grid Margin="0, 0, 10, 0">
                 <Button Content="Apply" Width="50" Command="{Binding Path=ApplySystemWindow}" Margin="0,0,-0.8,0" Height="19" VerticalAlignment="Top"/>
