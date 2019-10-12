@@ -1,0 +1,1084 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UWWPF</name>
+    </assembly>
+    <members>
+        <member name="T:UW.WPF.IPAddressChangedEventArgs">
+            <summary>
+            Custom event args for the IPAddressChanged event
+            </summary>
+        </member>
+        <member name="P:UW.WPF.IPAddressChangedEventArgs.IPAddr">
+            <summary>
+            The IPAddress
+            </summary>
+        </member>
+        <member name="T:UW.WPF.IPAddressControl">
+            <summary>
+            Interaction logic for IPAddressControl.xaml
+            </summary>
+            <summary>
+            IPAddressControl
+            </summary>
+        </member>
+        <member name="F:UW.WPF.IPAddressControl.viewModel">
+            <summary>
+            View-model for the control
+            </summary>
+        </member>
+        <member name="M:UW.WPF.IPAddressControl.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:UW.WPF.IPAddressControl.acquireDataContext">
+            <summary>
+            Setup the DataContext for the User Control.
+            </summary>
+        </member>
+        <member name="M:UW.WPF.IPAddressControl.selectedVehicleChanged(System.Object,System.EventArgs)">
+            <summary>
+            Handle the selected vehicle changed event.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:UW.WPF.IPAddressControl.initializeControls">
+            <summary>
+            Initialize settings for other controls contained on this UserControl
+            </summary>
+        </member>
+        <member name="M:UW.WPF.IPAddressControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:UW.WPF.IPAddressControlViewModel">
+            <summary>
+            IPAddressControl view model.
+            </summary>
+        </member>
+        <member name="M:UW.WPF.IPAddressControlViewModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="P:UW.WPF.IPAddressControlViewModel.IPAddr">
+            <summary>
+            The IPAddress
+            </summary>
+        </member>
+        <member name="P:UW.WPF.IPAddressControlViewModel.IPAddressPart1">
+            <summary>
+            First portion of the IP address
+            </summary>
+        </member>
+        <member name="P:UW.WPF.IPAddressControlViewModel.IPAddressPart2">
+            <summary>
+            Second portion of the IP address
+            </summary>
+        </member>
+        <member name="P:UW.WPF.IPAddressControlViewModel.IPAddressPart3">
+            <summary>
+            Third portion of the IP address
+            </summary>
+        </member>
+        <member name="P:UW.WPF.IPAddressControlViewModel.IPAddressPart4">
+            <summary>
+            Fourth portion of the IP address
+            </summary>
+        </member>
+        <member name="E:UW.WPF.IPAddressControlViewModel.IPAddressChanged">
+            <summary>
+            Event that the IP Address changed.
+            </summary>
+        </member>
+        <member name="M:UW.WPF.IPAddressControlViewModel.RaiseIPAddressChanged(UW.WPF.IPAddressChangedEventArgs)">
+            <summary>
+            Safely raise the IPAddressChanged event
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:UW.WPF.IPAddressControlViewModel.ObtainIPAddress">
+            <summary>
+            The IP Address that this control contains
+            </summary>
+        </member>
+        <member name="M:UW.WPF.IPAddressControlViewModel.acquireControllers">
+            <summary>
+            Obtain controllers from the TRAPISManagerController
+            </summary>
+        </member>
+        <member name="M:UW.WPF.IPAddressControlViewModel.releaseControllers">
+            <summary>
+            Release controllers which do not require persistence
+            </summary>
+        </member>
+        <member name="M:UW.WPF.IPAddressControlViewModel.startErrorHandling">
+            <summary>
+            Start error handling and logging.  Mostly for displaying "toast" messages and writing messages to the log files.
+            </summary>
+        </member>
+        <member name="M:UW.WPF.IPAddressControlViewModel.stopErrorHandling">
+            <summary>
+            Stop error handling and logging.
+            </summary>
+        </member>
+        <member name="M:UW.WPF.IPAddressControlViewModel.initializeOtherPrivateFields">
+            <summary>
+            Initialize and instantiate private fields that are not controllers, commands, or error token (these are initialized in other methods)
+            </summary>
+        </member>
+        <member name="M:UW.WPF.IPAddressControlViewModel.disposeUnmanagedOtherPrivateFields">
+            <summary>
+            Dispose of any other private fields which are unmanaged.  Fields which are controllers, commands, or error tokens are disposed in other methods)
+            </summary>
+        </member>
+        <member name="M:UW.WPF.IPAddressControlViewModel.Dispose">
+            <summary>
+            Dispose the resources associated with this view model.
+            </summary>
+        </member>
+        <member name="T:UW.WPF.SliderDisplayControl">
+            <summary>
+            Interaction logic for SliderDisplayControl.xaml
+            </summary>
+            <summary>
+            SliderDisplayControl
+            </summary>
+        </member>
+        <member name="M:UW.WPF.SliderDisplayControl.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="F:UW.WPF.SliderDisplayControl.SliderValueProperty">
+            <summary>
+            SliderValueProperty
+            </summary>
+        </member>
+        <member name="P:UW.WPF.SliderDisplayControl.SliderValue">
+            <summary>
+            SliderValue
+            </summary>
+        </member>
+        <member name="F:UW.WPF.SliderDisplayControl.MinimumProperty">
+            <summary>
+            MinimumProperty
+            </summary>
+        </member>
+        <member name="P:UW.WPF.SliderDisplayControl.Minimum">
+            <summary>
+            Minimum
+            </summary>
+        </member>
+        <member name="F:UW.WPF.SliderDisplayControl.MaximumProperty">
+            <summary>
+            MaximumProperty
+            </summary>
+        </member>
+        <member name="P:UW.WPF.SliderDisplayControl.Maximum">
+            <summary>
+            Maximum
+            </summary>
+        </member>
+        <member name="F:UW.WPF.SliderDisplayControl.TickFrequencyProperty">
+            <summary>
+            TickFrequencyProperty
+            </summary>
+        </member>
+        <member name="P:UW.WPF.SliderDisplayControl.TickFrequency">
+            <summary>
+            TickFrequency
+            </summary>
+        </member>
+        <member name="M:UW.WPF.SliderDisplayControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:UW.WPF.CanvasPlotter">
+            <summary>
+            A class to plot on a Canvas.  Note that this is a general purpose plotter which is not specific to any application.
+            </summary>
+        </member>
+        <member name="T:UW.WPF.CanvasPlotter.PlotSymbols">
+            <summary>
+            Different types of symbol that can be used
+            </summary>
+        </member>
+        <member name="F:UW.WPF.CanvasPlotter.PlotSymbols.Circle">
+            <summary>
+            Circle
+            </summary>
+        </member>
+        <member name="F:UW.WPF.CanvasPlotter.PlotSymbols.X">
+            <summary>
+            Cross or x
+            </summary>
+        </member>
+        <member name="F:UW.WPF.CanvasPlotter.PlotSymbols.Triangle">
+            <summary>
+            Triangle
+            </summary>
+        </member>
+        <member name="M:UW.WPF.CanvasPlotter.#ctor(System.Windows.Controls.Canvas)">
+            <summary>
+            Construct a plotter which can plot objects on the specified Canvas element.
+            </summary>
+            <param name="elementToDrawOn"></param>
+        </member>
+        <member name="P:UW.WPF.CanvasPlotter.PlotHost">
+            <summary>
+            The Canvas object which is actually doing the plotting
+            </summary>
+        </member>
+        <member name="P:UW.WPF.CanvasPlotter.Stroke">
+            <summary>
+            The brush used to plot.
+            </summary>
+        </member>
+        <member name="P:UW.WPF.CanvasPlotter.StrokeThickness">
+            <summary>
+            Thickness of the line to plot, in pixels.
+            </summary>
+        </member>
+        <member name="P:UW.WPF.CanvasPlotter.SymbolDiameter">
+            <summary>
+            The diameter of the sybols to plot (x, circle, square, etc.), in pixels.
+            </summary>
+        </member>
+        <member name="P:UW.WPF.CanvasPlotter.FontSize">
+            <summary>
+            The size of the font to use when plotting text
+            </summary>
+        </member>
+        <member name="P:UW.WPF.CanvasPlotter.Font">
+            <summary>
+            The family of the font to use when plotting text
+            </summary>
+        </member>
+        <member name="P:UW.WPF.CanvasPlotter.FontColor">
+            <summary>
+            The color of the font for text plotting
+            </summary>
+        </member>
+        <member name="M:UW.WPF.CanvasPlotter.Clear">
+            <summary>
+            Clear the plot
+            </summary>
+        </member>
+        <member name="M:UW.WPF.CanvasPlotter.Plot(System.Windows.Media.PathGeometry)">
+            <summary>
+            Plots the pathGeometry as a line
+            </summary>
+            <param name="pathGeometry"></param>
+        </member>
+        <member name="M:UW.WPF.CanvasPlotter.Plot(System.Collections.Generic.List{System.Windows.Point})">
+            <summary>
+            Plots the list of Point objects as a line
+            </summary>
+            <param name="points"></param>
+        </member>
+        <member name="M:UW.WPF.CanvasPlotter.Plot(System.Collections.Generic.List{System.Windows.Point},UW.WPF.CanvasPlotter.PlotSymbols)">
+            <summary>
+            Plots the list of Point objects as symbols
+            </summary>
+            <param name="points"></param>
+            <param name="symbol"></param>
+        </member>
+        <member name="M:UW.WPF.CanvasPlotter.Plot(System.Windows.Media.LineGeometry)">
+            <summary>
+            Plots the LineGeometry as a line
+            </summary>
+            <param name="lineGeometry"></param>
+        </member>
+        <member name="M:UW.WPF.CanvasPlotter.PlotSymbol(System.Windows.Point,UW.WPF.CanvasPlotter.PlotSymbols)">
+            <summary>
+            Plot the point using the desired symbol
+            </summary>
+            <param name="pt"></param>
+            <param name="symbol"></param>
+        </member>
+        <member name="M:UW.WPF.CanvasPlotter.PlotText(System.Windows.Point,System.String)">
+            <summary>
+            Plots the specified text at the desired location
+            </summary>
+            <param name="pt"></param>
+            <param name="text"></param>
+        </member>
+        <member name="M:UW.WPF.CanvasPlotter.ResetSettings">
+            <summary>
+            Reset all the plotting settings to their default values.
+            </summary>
+        </member>
+        <member name="M:UW.WPF.CanvasPlotter.setPathToCurrentSettings(System.Windows.Shapes.Path)">
+            <summary>
+            Sets the properties on the specified Path object to the current settings of this object.
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="T:UW.WPF.Templates.TemplateUserControl">
+            <summary>
+            Interaction logic for TemplateUserControl.xaml
+            </summary>
+            <summary>
+            TemplateUserControl
+            </summary>
+        </member>
+        <member name="F:UW.WPF.Templates.TemplateUserControl.viewModel">
+            <summary>
+            View-model for the control
+            </summary>
+        </member>
+        <member name="M:UW.WPF.Templates.TemplateUserControl.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:UW.WPF.Templates.TemplateUserControl.acquireDataContext">
+            <summary>
+            Setup the DataContext for the UserControl.
+            </summary>
+        </member>
+        <member name="M:UW.WPF.Templates.TemplateUserControl.initializeControls">
+            <summary>
+            Initialize settings for other controls contained on this UserControl
+            </summary>
+        </member>
+        <member name="M:UW.WPF.Templates.TemplateUserControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:UW.WPF.Templates.TemplateUserControlViewModel">
+            <summary>
+            A skeleton template for a UserControl view model.
+            </summary>
+        </member>
+        <member name="M:UW.WPF.Templates.TemplateUserControlViewModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:UW.WPF.Templates.TemplateUserControlViewModel.acquireControllers">
+            <summary>
+            Obtain necessary controllers from appropriate sources (for example: global data providers or a factory)
+            </summary>
+        </member>
+        <member name="M:UW.WPF.Templates.TemplateUserControlViewModel.releaseControllers">
+            <summary>
+            Release controllers which do not require persistence
+            </summary>
+        </member>
+        <member name="M:UW.WPF.Templates.TemplateUserControlViewModel.startErrorHandling">
+            <summary>
+            Start error handling and logging.  Mostly for displaying "toast" messages and writing messages to the log files.
+            </summary>
+        </member>
+        <member name="M:UW.WPF.Templates.TemplateUserControlViewModel.stopErrorHandling">
+            <summary>
+            Stop error handling and logging.
+            </summary>
+        </member>
+        <member name="M:UW.WPF.Templates.TemplateUserControlViewModel.initializeOtherPrivateFields">
+            <summary>
+            Initialize and instantiate private fields that are not controllers, commands, or error token (these are initialized in other methods)
+            </summary>
+        </member>
+        <member name="M:UW.WPF.Templates.TemplateUserControlViewModel.disposeUnmanagedOtherPrivateFields">
+            <summary>
+            Dispose of any other private fields which are unmanaged.  Fields which are controllers, commands, or error tokens are disposed in other methods)
+            </summary>
+        </member>
+        <member name="M:UW.WPF.Templates.TemplateUserControlViewModel.Dispose">
+            <summary>
+            Dispose the resources associated with this view model.
+            </summary>
+        </member>
+        <member name="T:UW.WPF.ColorInterpolater">
+            <summary>
+            A class which will allow colors to be interpolated based on a value.
+            </summary>
+        </member>
+        <member name="F:UW.WPF.ColorInterpolater._valStart">
+            <summary>
+            starting value
+            </summary>
+        </member>
+        <member name="F:UW.WPF.ColorInterpolater._valEnd">
+            <summary>
+            ending value
+            </summary>
+        </member>
+        <member name="F:UW.WPF.ColorInterpolater._startR">
+            <summary>
+            Red value that corresponds to the _valStart
+            </summary>
+        </member>
+        <member name="F:UW.WPF.ColorInterpolater._startG">
+            <summary>
+            Green value that corresponds to the _valStart
+            </summary>
+        </member>
+        <member name="F:UW.WPF.ColorInterpolater._startB">
+            <summary>
+            Blue value that corresponds to the _valStart
+            </summary>
+        </member>
+        <member name="F:UW.WPF.ColorInterpolater._endR">
+            <summary>
+            Red value that corresponds to the _valEnd
+            </summary>
+        </member>
+        <member name="F:UW.WPF.ColorInterpolater._endG">
+            <summary>
+            Green value that corresponds to the _valEnd
+            </summary>
+        </member>
+        <member name="F:UW.WPF.ColorInterpolater._endB">
+            <summary>
+            Blue value that corresponds to the _valEnd
+            </summary>
+        </member>
+        <member name="M:UW.WPF.ColorInterpolater.#ctor">
+            <summary>
+            Default contructor
+            </summary>
+        </member>
+        <member name="M:UW.WPF.ColorInterpolater.#ctor(System.Double,System.Double,System.Windows.Media.SolidColorBrush,System.Windows.Media.SolidColorBrush)">
+            <summary>
+            Construct from specified values and colors
+            </summary>
+            <param name="valStart"></param>
+            <param name="valEnd"></param>
+            <param name="colorStart"></param>
+            <param name="colorEnd"></param>
+        </member>
+        <member name="M:UW.WPF.ColorInterpolater.ColorAtSpecifiedValue(System.Double)">
+            <summary>
+            Gets the color corresponding to the specified value.
+            </summary>
+            <param name="val"></param>
+            <returns></returns>
+        </member>
+        <member name="T:UW.WPF.AxisTickLocation">
+            <summary>
+            Where should the axis ticks be located
+            </summary>
+        </member>
+        <member name="F:UW.WPF.AxisTickLocation.Bottom">
+            <summary>
+            Bottom
+            </summary>
+        </member>
+        <member name="F:UW.WPF.AxisTickLocation.Left">
+            <summary>
+            Left
+            </summary>
+        </member>
+        <member name="F:UW.WPF.AxisTickLocation.Top">
+            <summary>
+            Top
+            </summary>
+        </member>
+        <member name="F:UW.WPF.AxisTickLocation.Right">
+            <summary>
+            Right
+            </summary>
+        </member>
+        <member name="F:UW.WPF.AxisTickLocation.Middle">
+            <summary>
+            Middle
+            </summary>
+        </member>
+        <member name="T:UW.WPF.MarkerType">
+            <summary>
+            What type of marker is used
+            </summary>
+        </member>
+        <member name="F:UW.WPF.MarkerType.Circle">
+            <summary>
+            Circle
+            </summary>
+        </member>
+        <member name="F:UW.WPF.MarkerType.Square">
+            <summary>
+            Square
+            </summary>
+        </member>
+        <member name="F:UW.WPF.MarkerType.Cross">
+            <summary>
+            Cross
+            </summary>
+        </member>
+        <member name="T:UW.WPF.UWCanvas">
+             <summary>
+             Follow steps 1a or 1b and then 2 to use this custom control in a XAML file.
+            
+             Step 1a) Using this custom control in a XAML file that exists in the current project.
+             Add this XmlNamespace attribute to the root element of the markup file where it is 
+             to be used:
+            
+                 xmlns:MyNamespace="clr-namespace:UW.UWCanvas_NS"
+            
+            
+             Step 1b) Using this custom control in a XAML file that exists in a different project.
+             Add this XmlNamespace attribute to the root element of the markup file where it is 
+             to be used:
+            
+                 xmlns:MyNamespace="clr-namespace:UW.UWCanvas_NS;assembly=UW.UWCanvas_NS"
+            
+             You will also need to add a project reference from the project where the XAML file lives
+             to this project and Rebuild to avoid compilation errors:
+            
+                 Right click on the target project in the Solution Explorer and
+                 "Add Reference"->"Projects"->[Select this project]
+            
+            
+             Step 2)
+             Go ahead and use your control in the XAML file.
+            
+                 &lt;MyNamespace:CustomControl1/&gt;
+            
+             </summary>
+        </member>
+        <member name="F:UW.WPF.UWCanvas._xMin">
+            <summary>
+            Minimum x value on the canvas
+            </summary>
+        </member>
+        <member name="F:UW.WPF.UWCanvas._xMax">
+            <summary>
+            Maximum x value on the canvas
+            </summary>
+        </member>
+        <member name="F:UW.WPF.UWCanvas._yMin">
+            <summary>
+            Minimum y value on the canvas
+            </summary>
+        </member>
+        <member name="F:UW.WPF.UWCanvas._yMax">
+            <summary>
+            Maximum y value on the canvas
+            </summary>
+        </member>
+        <member name="F:UW.WPF.UWCanvas._approximateNumAxisTicksX">
+            <summary>
+            Approximate number of tick marks along the x axis
+            </summary>
+        </member>
+        <member name="F:UW.WPF.UWCanvas._approximateNumAxisTicksY">
+            <summary>
+            Approximate number of tick marks along the y axis
+            </summary>
+        </member>
+        <member name="M:UW.WPF.UWCanvas.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:UW.WPF.UWCanvas.#ctor(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Construct from specified values
+            </summary>
+            <param name="xMin"></param>
+            <param name="xMax"></param>
+            <param name="yMin"></param>
+            <param name="yMax"></param>
+        </member>
+        <member name="P:UW.WPF.UWCanvas.CanvasHeight">
+            <summary>
+            Read only property denoting the width of the canvas in the same units as the yMin and yMax properties.
+            </summary>
+        </member>
+        <member name="P:UW.WPF.UWCanvas.CanvasWidth">
+            <summary>
+            Read only property denoting the width of the canvas in the same units as the xMin and xMax properties.
+            </summary>
+        </member>
+        <member name="P:UW.WPF.UWCanvas.xMin">
+            <summary>
+            Minimum x value of the canvas.
+            </summary>
+        </member>
+        <member name="P:UW.WPF.UWCanvas.xMax">
+            <summary>
+            Maximum x value of the canvas.
+            </summary>
+        </member>
+        <member name="P:UW.WPF.UWCanvas.yMin">
+            <summary>
+            Minimum y value of the canvas.
+            </summary>
+        </member>
+        <member name="P:UW.WPF.UWCanvas.yMax">
+            <summary>
+            Maximum y value of the canvas.
+            </summary>
+        </member>
+        <member name="P:UW.WPF.UWCanvas.ApproximateNumAxisTicksX">
+            <summary>
+            Approximate number of tick marks in the x direction
+            </summary>
+        </member>
+        <member name="P:UW.WPF.UWCanvas.ApproximateNumAxisTicksY">
+            <summary>
+            Approximate number of tick marks in the y direction
+            </summary>
+        </member>
+        <member name="M:UW.WPF.UWCanvas.SetCanvasBoundaries(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Sets the x and y min/max boundaries of the UWCanvas object.  This function is useful to use (as opposed to setting individual properties line by line) because it will avoid insidious errors where the object may temporarily be in an unacceptable state.
+            </summary>
+            <param name="xMin"></param>
+            <param name="xMax"></param>
+            <param name="yMin"></param>
+            <param name="yMax"></param>
+        </member>
+        <member name="M:UW.WPF.UWCanvas.SetCanvasBoundariesSlightlyLarger(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Sets the canvas boundaries to be slightly larger than the specified xMin, xMax, yMin, and yMax.  
+            
+            The amount of "slightly larger" is determined by the xPercentage and yPercentage.  For example, xPercentage = 0.25 implies that the
+            x axis should be approximaly 25% larger than the 
+            
+            </summary>
+            <param name="xMin"></param>
+            <param name="xMax"></param>
+            <param name="yMin"></param>
+            <param name="yMax"></param>
+            <param name="xPercentage"></param>
+            <param name="yPercentage"></param>
+        </member>
+        <member name="M:UW.WPF.UWCanvas.ClearCanvas">
+            <summary>
+            Clear the canvas of all drawing.  Similar to Matlab's 'clf' command.
+            </summary>
+        </member>
+        <member name="M:UW.WPF.UWCanvas.ConvertXCoordinateToPixelsFromLeft(System.Double)">
+            <summary>
+            Converts the x-coordinate (expressed in the UWCanvas frame) to number of pixels from the left of the canvas (origin at left and increasing to the right)
+            </summary>
+            <param name="x_uw"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UW.WPF.UWCanvas.ConvertYCoordinateToPixelsFromTop(System.Double)">
+            <summary>
+            Converts the y-coordinate (expressed in the UWCanvas frame) to number of pixels from the top of the canvas (origin at top and increasing down)
+            </summary>
+            <param name="y_uw"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UW.WPF.UWCanvas.ConvertXDistanceToPixels(System.Double)">
+            <summary>
+            Converts a distance along the UWCanvas x axis to number of pixels.
+            </summary>
+            <param name="distance_x"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UW.WPF.UWCanvas.ConvertYDistanceToPixels(System.Double)">
+            <summary>
+            Converts a distance along the UWCanvas y axis to number of pixels.
+            </summary>
+            <param name="distance_y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UW.WPF.UWCanvas.DrawNow">
+            <summary>
+            Attempt to force the UWCanvas to render itself when this method is called.
+            
+            This attempts to replicate the functionality of Matlab's 'drawnow' command.
+            
+            Code based on example shown in 'Update the WPF UI now: how to wait for the rendering to finish ?' located at http://www.jonathanantoine.com/2011/08/29/update-my-ui-now-how-to-wait-for-the-rendering-to-finish/
+            
+            another example found in 'Refresh / Update WPF controls' article located at http://geekswithblogs.net/NewThingsILearned/archive/2008/08/25/refresh--update-wpf-controls.aspx
+            </summary>
+        </member>
+        <member name="M:UW.WPF.UWCanvas.Plot(UW.MathFunctions.UWMatrix,UW.MathFunctions.UWMatrix,System.Windows.Media.SolidColorBrush,System.Double)">
+            <summary>
+            Plot the data in the 1D matrices x and y on the UWCanvas.
+            
+            The x and y values specified are in the UW frame (Fuw).
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="solidColorBrush"></param>
+            <param name="strokeThickness"></param>
+        </member>
+        <member name="M:UW.WPF.UWCanvas.Plot(UW.MathFunctions.UWMatrix,UW.MathFunctions.UWMatrix)">
+            <summary>
+            Plots the data in the 1D matrices x and y on the UWCanvas.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+        </member>
+        <member name="M:UW.WPF.UWCanvas.PlotGridLines(System.Boolean)">
+            <summary>
+            Draw some grid lines on the canvas.  This method is more intelligent than the PlotGridLinesExact method as it tries to draw grid lines at intelligent locations.
+            
+            The number of grid lines drawn are determined by the this.ApproximateNumAxisTicksX and this.ApproximateNumAxisTicksY properties.
+            
+            If textLabels is true, then the grid line values will be printed next to the items.
+            </summary>
+            <param name="textLabels"></param>
+        </member>
+        <member name="M:UW.WPF.UWCanvas.PlotGridLinesExact(System.Boolean)">
+            <summary>
+            Draw some grid lines on the canvas.  
+            
+            The number of grid lines drawn are determined by the this.ApproximateNumAxisTicksX and this.ApproximateNumAxisTicksY properties.
+            
+            If textLabels is true, then the grid line values will be printed next to the items.
+            </summary>
+            <param name="textLabels"></param>
+        </member>
+        <member name="M:UW.WPF.UWCanvas.PlotOrigin">
+            <summary>
+            Plots the origin of the UWCanvas.
+            </summary>
+        </member>
+        <member name="M:UW.WPF.UWCanvas.PlotMarker(System.Double,System.Double,UW.WPF.MarkerType,System.Double,System.Windows.Shapes.Path)">
+            <summary>
+            Plot the specific type of marker on the canvas.  A marker is different from an equivalent shape (ie MarkerType.circle vs. PlotCircle) in the sense that
+            markers have their size automatically calculated for the size of the canvas.  
+            
+            The marker size is determined by markerSize, which is a percentage of the canvas width (ie markerSize=0.05) means the marker should take up 5% of the canvas width.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="markerType"></param>
+            <param name="markerSize">in range [0,1] to specify percentage of canvas width that the marker takes up</param>
+            <param name="path">Path object used to determine how marker is drawn.</param>
+        </member>
+        <member name="M:UW.WPF.UWCanvas.PlotMarker(System.Double,System.Double,UW.WPF.MarkerType,System.Double)">
+            <summary>
+            Does the same as PlotMarker(double x, double y, MarkerType markerType, double markerSize, Path path) except it uses a standard Path object.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="markerType"></param>
+            <param name="markerSize">in range [0,1] to specify percentage of canvas width that the marker takes up</param>
+        </member>
+        <member name="M:UW.WPF.UWCanvas.PlotEllipseThatLooksLikeCircle(System.Double,System.Double,System.Double,System.Windows.Shapes.Path)">
+            <summary>
+            Plots an ellipse at the specified location.  
+            
+            The semi-major and semi-minor axis of the ellipse is calculated so that this will look like a circle when rendered on the canvas.
+            To do this, the radius specified is actually the semi-major axis of the ellipse (distance along the x-axis).
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="radius">The semi-major axis of the ellipse</param>
+            <param name="path">Path object used to determine how circle is drawn.</param>
+        </member>
+        <member name="M:UW.WPF.UWCanvas.PlotEllipseThatLooksLikeCircle(System.Double,System.Double,System.Double)">
+            <summary>
+            Plots an ellipse at the specified location.  
+            
+            The semi-major and semi-minor axis of the ellipse is calculated so that this will look like a circle when rendered on the canvas.
+            To do this, the radius specified is actually the semi-major axis of the ellipse (distance along the x-axis).
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="radius"></param>
+        </member>
+        <member name="M:UW.WPF.UWCanvas.PlotCircle(System.Double,System.Double,System.Double,System.Windows.Shapes.Path)">
+            <summary>
+            Plots a circle at the specified location and radius.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="radius"></param>
+            <param name="path">Path object used to determine how circle is drawn.</param>
+        </member>
+        <member name="M:UW.WPF.UWCanvas.PlotCircle(System.Double,System.Double,System.Double)">
+            <summary>
+            Plots a circle at the specified location and radius.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="radius"></param>
+        </member>
+        <member name="M:UW.WPF.UWCanvas.Text(System.Double,System.Double,System.String,System.Windows.Controls.TextBlock)">
+            <summary>
+            Plot the string (str) at the specified location (x,y).  The postion (x,y) denotes the top left corner of the textblock.
+            </summary>
+            <param name="x">x position expressed in F_uw</param>
+            <param name="y">y position expressed in F_uw</param>
+            <param name="str"></param>
+            <param name="textBlock">object to use as a template for things like fontsize, family, etc.</param>
+        </member>
+        <member name="M:UW.WPF.UWCanvas.Text(System.Double,System.Double,System.String)">
+            <summary>
+            Plot the string (str) at the specified location (x,y).  The postion (x,y) denotes the top left corner of the textblock.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="str"></param>
+        </member>
+        <member name="M:UW.WPF.UWCanvas.XLabel(System.String,System.Windows.Controls.TextBlock)">
+            <summary>
+            Add an x-axis label.
+            </summary>
+            <param name="str"></param>
+            <param name="textBlock"></param>
+        </member>
+        <member name="M:UW.WPF.UWCanvas.XLabel(System.String)">
+            <summary>
+            Add an x-axis label.
+            </summary>
+            <param name="str"></param>
+        </member>
+        <member name="M:UW.WPF.UWCanvas.YLabel(System.String,System.Windows.Controls.TextBlock)">
+            <summary>
+            Add a y-axis label.
+            </summary>
+            <param name="str"></param>
+            <param name="textBlock"></param>
+        </member>
+        <member name="M:UW.WPF.UWCanvas.YLabel(System.String)">
+            <summary>
+            Add a y-axis label.
+            </summary>
+            <param name="str"></param>
+        </member>
+        <member name="M:UW.WPF.UWCanvas._convertXExpressedInFuwToXExpressedInFc(System.Double)">
+            <summary>
+            Convert x_uw (expressed in UWCanvas frame) to x_c (Canvas frame).
+            </summary>
+            <param name="x_uw"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UW.WPF.UWCanvas._convertYExpressedInFuwToYExpressedInFc(System.Double)">
+            <summary>
+            Convert y_uw (expressed in UWCanvas frame) to y_c (Canvas frame).
+            </summary>
+            <param name="y_uw"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UW.WPF.UWCanvas._convertXExpressedInFuwToXExpressedInFcm(System.Double)">
+            <summary>
+            Convert x_uw (expressed in UWCanvas frame) to x_cm (Canvas Modified frame).
+            </summary>
+            <param name="x_uw"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UW.WPF.UWCanvas._convertXExpressedInFuwToXExpressedInFcm(UW.MathFunctions.UWMatrix)">
+            <summary>
+            Convert x_uw (expressed in UWCanvas frame) to x_cm (Canvas Modified frame).
+            </summary>
+            <param name="x_uw"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UW.WPF.UWCanvas._convertXExpressedInFcmToXExpressedInFuw(System.Double)">
+            <summary>
+            Convert x_cm (Canvas Modified frame) to x_uw (expressed in UWCanvas frame).
+            </summary>
+            <param name="x_cm"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UW.WPF.UWCanvas._convertXExpressedInFcmToXExpressedInFuw(UW.MathFunctions.UWMatrix)">
+            <summary>
+            Convert x_cm (Canvas Modified frame) to x_uw (expressed in UWCanvas frame).
+            </summary>
+            <param name="x_cm"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UW.WPF.UWCanvas._convertYExpressedInFuwToYExpressedInFcm(System.Double)">
+            <summary>
+            Convert y_uw (expressed in UWCanvas frame) to y_cm (Canvas Modified frame).
+            </summary>
+            <param name="y_uw"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UW.WPF.UWCanvas._convertYExpressedInFuwToYExpressedInFcm(UW.MathFunctions.UWMatrix)">
+            <summary>
+            Convert y_uw (expressed in UWCanvas frame) to y_cm (Canvas Modified frame).
+            </summary>
+            <param name="y_uw"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UW.WPF.UWCanvas._convertYExpressedInFcmToYExpressedInFuw(System.Double)">
+            <summary>
+            Convert y_cm (Canvas Modified frame) to y_uw (expressed in UWCanvas frame).
+            </summary>
+            <param name="y_cm"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UW.WPF.UWCanvas._convertYExpressedInFcmToYExpressedInFuw(UW.MathFunctions.UWMatrix)">
+            <summary>
+            Convert y_cm (Canvas Modified frame) to y_uw (expressed in UWCanvas frame).
+            </summary>
+            <param name="y_cm"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UW.WPF.UWCanvas._convertDistanceExpressedInFcmUnitsToDistanceExpressedInFuwxUnits(System.Double)">
+            <summary>
+            Convert a distance which is expressed in the F_cm units (effectively pixels) to units expressed in F_uw x-axis units (whatever units xMin and xMax use).
+            </summary>
+            <param name="distance_cm"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UW.WPF.UWCanvas._convertDistanceExpressedInFcmUnitsToDistanceExpressedInFuwyUnits(System.Double)">
+            <summary>
+            Convert a distance which is expressed in the F_cm units (effectively pixels) to units expressed in F_uw y-axis units (whatever units yMin and yMax use).
+            </summary>
+            <param name="distance_cm"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UW.WPF.UWCanvas._convertDistanceExpressedInFuwxUnitsToDistanceExpressedInFcmUnits(System.Double)">
+            <summary>
+            Convert a distance in F_uw x-axis units (whatever units xMin and xMax use) to a distance expressed in the F_cm units (effectively pixels).
+            </summary>
+            <param name="distance_uwx"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UW.WPF.UWCanvas._convertDistanceExpressedInFuwyUnitsToDistanceExpressedInFcmUnits(System.Double)">
+            <summary>
+            Convert a distance in F_uw y-axis units (whatever units yMin and yMax use) to a distance expressed in the F_cm units (effectively pixels).
+            </summary>
+            <param name="distance_uwy"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UW.WPF.UWCanvas._plotXAxisTickLabel(System.Double,System.Windows.Controls.TextBlock,UW.WPF.AxisTickLocation)">
+            <summary>
+            Plot a x axis axis tick at the specified location.
+            </summary>
+            <param name="x"></param>
+            <param name="textBlock"></param>
+            <param name="axisTickLocation"></param>
+        </member>
+        <member name="M:UW.WPF.UWCanvas._plotXAxisTickLabel(System.Double,UW.WPF.AxisTickLocation)">
+            <summary>
+            Plot a x axis axis tick at the specified location. 
+            </summary>
+            <param name="x"></param>
+            <param name="axisTickLocation"></param>
+        </member>
+        <member name="M:UW.WPF.UWCanvas._plotYAxisTickLabel(System.Double,System.Windows.Controls.TextBlock,UW.WPF.AxisTickLocation)">
+            <summary>
+            Plot a x axis axis tick at the specified location.
+            </summary>
+            <param name="y"></param>
+            <param name="textBlock"></param>
+            <param name="axisTickLocation"></param>
+        </member>
+        <member name="M:UW.WPF.UWCanvas._plotYAxisTickLabel(System.Double,UW.WPF.AxisTickLocation)">
+            <summary>
+            Plot a x axis axis tick at the specified location. 
+            </summary>
+            <param name="y"></param>
+            <param name="axisTickLocation"></param>
+        </member>
+        <member name="T:UW.WPF.UWFunctionsWPF">
+            <summary>
+            A class to provide functionality when interacting with view objects in WPF.
+            
+            These functions are intended to be used with WPF views.  As a consequence of this,
+            
+                -some errors are printed to a MessageBox which makes it difficult to unit test some functionality.
+            </summary>
+        </member>
+        <member name="M:UW.WPF.UWFunctionsWPF.ConvertYExpressedInFcToYExpressedInFcm(System.Double,System.Double)">
+            <summary>
+            Convert the specified y_c (y value expressed in the canvas frame which has origin at top left with positive y pointing down) to a y_cm value (y value expressed in the modified canvas frame which has its origin at the bottom left with positive y pointing up).
+            </summary>
+            <param name="y_c">y distance in pixels</param>
+            <param name="canvasHeightPixels">canvas height in pixels</param>
+            <returns></returns>
+        </member>
+        <member name="M:UW.WPF.UWFunctionsWPF.ConvertYExpressedInFcmToYExpressedInFc(System.Double,System.Double)">
+            <summary>
+            Convert the specified y_cm (y value expressed in the modified canvas frame which has its origin at the bottom left with positive y pointing up) to a y_c value (y value expressed in the canvas frame which has origin at top left with positive y pointing down) .
+            </summary>
+            <param name="y_cm">y distance in pixels</param>
+            <param name="canvasHeightPixels">canvas height in pixels</param>
+            <returns></returns>
+        </member>
+        <member name="M:UW.WPF.UWFunctionsWPF.PlotCrossExpressedInFcm(System.Double,System.Double,System.Double,System.Windows.Controls.Canvas,System.Windows.Media.SolidColorBrush,System.Double)">
+            <summary>
+            Draw a cross at the specified location
+            </summary>
+            <param name="xCenter_cm"></param>
+            <param name="yCenter_cm"></param>
+            <param name="width_pixels"></param>
+            <param name="myCanvas"></param>
+            <param name="solidColorBrush"></param>
+            <param name="strokeThickness"></param>
+        </member>
+        <member name="M:UW.WPF.UWFunctionsWPF.PlotXYExpressedInFcm(UW.MathFunctions.UWMatrix,UW.MathFunctions.UWMatrix,System.Windows.Controls.Canvas,System.Windows.Media.SolidColorBrush,System.Double)">
+            <summary>
+            Plot the data in the 1D matrices x_cm and y_cm on the specified Canvas.
+            
+            The x_cm and y_cm values specified are in the modified canvas frame (Fcm) where the origin is at the bottom left corner with positive x_cm pointing towards the right and positive y_cm pointing up.
+            </summary>
+            <param name="x_cm"></param>
+            <param name="y_cm"></param>
+            <param name="myCanvas"></param>
+            <param name="solidColorBrush"></param>
+            <param name="strokeThickness"></param>
+        </member>
+        <member name="T:UW.WPF.UWUtilitiesWPF">
+            <summary>
+            Class to provide some static methods for performing WPF operations
+            </summary>
+        </member>
+        <member name="M:UW.WPF.UWUtilitiesWPF.AllowUIToUpdate">
+            <summary>
+            In some situations, the UI may not update until after a method has completed.  
+            Calling this method after setting a property will allow the UI to update.  
+            
+            Source:
+            http://social.msdn.microsoft.com/forums/en-US/wpf/thread/6fce9b7b-4a13-4c8d-8c3e-562667851baa/
+            Post by Samuel Jack on August 02, 2006
+            </summary>
+        </member>
+        <member name="T:UW.WPF.ViewModelBaseUW">
+            <summary>
+            Captures some of the base functionality of a ViewModel.  This class should be inherited by any ViewModel objects.
+            
+            Recall that the function and features of the view-model object should be
+                -The ViewModel should act as a converter that changes model information into view information and passes commands from the view into the model.
+                -The view binds to properties on a ViewModel, which, in turn, exposes data contained in model objects and other state specific to the view.
+                -The bindings between view and ViewModel are simple to construct because a ViewModel object is set as the DataContext of a view.
+                -The ViewModel, never the View, performs all modifications made to the model data. 
+                -The ViewModel and model are unaware of the view. In fact, the model is completely oblivious to the fact that the ViewModel and view exist. 
+            </summary>
+        </member>
+        <member name="M:UW.WPF.ViewModelBaseUW.OnPropertyChanged(System.String)">
+            <summary>
+            Raises this object's PropertyChanged event.
+            </summary>
+            <param name="propertyName">The property that has a new value.</param>
+        </member>
+        <member name="E:UW.WPF.ViewModelBaseUW.PropertyChanged">
+            <summary>
+            PropertyChanged event
+            </summary>
+        </member>
+        <member name="M:UW.WPF.ViewModelBaseUW.VerifyPropertyName(System.String)">
+            <summary>
+            Warns the developer if this object does not have
+            a public property with the specified name. This 
+            method does not exist in a Release build.
+            
+            Taken from the article "WPF Apps With The Model-View-ViewModel Design Pattern" by Josh Smith
+            "...provides the ability to verify that a property with a given name actually exists on the ViewModel object. 
+            This is very useful when refactoring, because changing a property's name via the Visual Studio 2008 refactoring 
+            feature will not update strings in your source code that happen to contain that property's name (nor should it). 
+            Raising the PropertyChanged event with an incorrect property name in the event argument can lead to subtle bugs 
+            that are difficult to track down, so this little feature can be a huge timesaver. "
+            </summary>
+        </member>
+        <member name="P:UW.WPF.ViewModelBaseUW.ThrowOnInvalidPropertyName">
+            <summary>
+            Returns whether an exception is thrown, or if a Debug.Fail() is used
+            when an invalid property name is passed to the VerifyPropertyName method.
+            The default value is false, but subclasses used by unit tests might 
+            override this property's getter to return true.
+            </summary>
+        </member>
+    </members>
+</doc>
