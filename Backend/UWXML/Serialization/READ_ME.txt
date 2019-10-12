@@ -1,0 +1,1 @@
+﻿This is intended to have methods and functions which help with serialization procedures.
