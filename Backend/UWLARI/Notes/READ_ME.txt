@@ -1,1 +1,0 @@
-﻿Notes about LARI can go here.

@@ -1,9 +1,0 @@
-C:\Users\Kevin Zhu\Perforce\zhuk7_DESKTOP-I7H9ED6_4075\UWSDK\UWSDK\UWXML\bin\Debug\UWXML.dll
-C:\Users\Kevin Zhu\Perforce\zhuk7_DESKTOP-I7H9ED6_4075\UWSDK\UWSDK\UWXML\bin\Debug\UWXML.pdb
-C:\Users\Kevin Zhu\Perforce\zhuk7_DESKTOP-I7H9ED6_4075\UWSDK\UWSDK\UWXML\obj\Debug\UWXML.csproj.CoreCompileInputs.cache
-C:\Users\Kevin Zhu\Perforce\zhuk7_DESKTOP-I7H9ED6_4075\UWSDK\UWSDK\UWXML\obj\Debug\UWXML.dll
-C:\Users\Kevin Zhu\Perforce\zhuk7_DESKTOP-I7H9ED6_4075\UWSDK\UWSDK\UWXML\obj\Debug\UWXML.pdb
-C:\Users\Kevin Zhu\Perforce\zhuk7_DESKTOP-I7H9ED6_4075\UWSDK\UWSDK\UWXML\obj\Debug\UWXML.csprojAssemblyReference.cache
-C:\Users\Kevin Zhu\Perforce\zhuk7_DESKTOP-I7H9ED6_4075\UWSDK\UWSDK\UWXML\bin\Debug\UWXML.dll.config
-C:\Users\Kevin Zhu\Perforce\zhuk7_DESKTOP-I7H9ED6_4075\UWSDK\UWSDK\UWXML\bin\Debug\System.Data.SQLite.Linq.dll
-C:\Users\Kevin Zhu\Perforce\zhuk7_DESKTOP-I7H9ED6_4075\UWSDK\UWSDK\UWXML\obj\Debug\UWXML.csproj.CopyComplete
