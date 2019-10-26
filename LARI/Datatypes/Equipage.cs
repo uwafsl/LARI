@@ -53,7 +53,7 @@ namespace UW.LARI.Datatypes
         /// </summary>
         public Equipage()
         {
-            conn = new SQLiteConnection("Data Source=.\\TestDB.db;Version=3;New=True");
+            conn = new SQLiteConnection("Data Source=.\\test.db;Version=3;New=True");
             conn.Open();
             SQLiteCommand command = conn.CreateCommand();
             command.CommandText = "PRAGMA foreign_keys=ON";
@@ -77,7 +77,7 @@ namespace UW.LARI.Datatypes
         /// <summary>
         /// Constructor that takes a given, existing database
         /// </summary>
-        public Equipage(string dbFilePath = ".\\TestDB.db") /// TEST: change this parameter back
+        public Equipage(string dbFilePath = ".\\test.db") /// TEST: change this parameter back
         {
             if (!File.Exists(dbFilePath))
             {
