@@ -51,34 +51,35 @@ namespace UW.LARI.Datatypes
         /// <summary>
         /// Default constructor that creates an in memory sqlite database
         /// </summary>
-        public Equipage()
-        {
-            conn = new SQLiteConnection("Data Source=.\\test.db;Version=3;New=True");
-            conn.Open();
-            SQLiteCommand command = conn.CreateCommand();
-            command.CommandText = "PRAGMA foreign_keys=ON";
-            command.ExecuteNonQuery();
-            this.initializeSqlCommands();
+        //public Equipage()
+        //{
+        //    conn = new SQLiteConnection("Data Source=.\\test.db;Version=3;New=True");
+        //    conn.Open();
+        //    SQLiteCommand command = conn.CreateCommand();
+        //    command.CommandText = "PRAGMA foreign_keys=ON";
+        //    command.ExecuteNonQuery();
+        //    this.initializeSqlCommands();
 
-            // Create tables in memory
-            using (var tx = conn.BeginTransaction())
-            {
-                createTablesCommand.ExecuteNonQuery();
-                tx.Commit();
-            }
+        //    // Create tables in memory
+        //    using (var tx = conn.BeginTransaction())
+        //    {
+        //        createTablesCommand.ExecuteNonQuery();
+        //        tx.Commit();
+        //    }
 
-            this.startErrorHandling();
-            this.initializeOtherPrivateFields();
-            this.createCommands();
-            this.acquireControllers();
-            this.subscribeToEvents();
-        }
+        //    this.startErrorHandling();
+        //    this.initializeOtherPrivateFields();
+        //    this.createCommands();
+        //    this.acquireControllers();
+        //    this.subscribeToEvents();
+        //}
 
         /// <summary>
         /// Constructor that takes a given, existing database
         /// </summary>
-        public Equipage(string dbFilePath = ".\\test.db") /// TEST: change this parameter back
+        public Equipage() /// TEST: change this parameter back
         {
+            string dbFilePath = ".\\test.db";
             if (!File.Exists(dbFilePath))
             {
                 SQLiteConnection.CreateFile(dbFilePath);

@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\Kevin Zhu\LARI\LARI\obj\Debug\
+Z:\LARI\LARI\obj\Debug\
 LARI
 none
 false
 DEBUG;TRACE
-C:\Users\Kevin Zhu\LARI\LARI\App.xaml
+Z:\LARI\LARI\App.xaml
 5-1340358390
 2-2095645759
 211892929257
-19-785001549
+19-1419462966
 Views\AddComponentWindow.xaml;Views\AddSystemWindow.xaml;Views\ComponentTrackerView.xaml;Views\EditSystemWindow.xaml;Views\MainWindow.xaml;
 
 False

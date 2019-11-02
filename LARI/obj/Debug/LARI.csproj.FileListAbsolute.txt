@@ -67,3 +67,4 @@ C:\Users\Kevin Zhu\LARI\LARI\obj\Debug\LARI.csproj.CopyComplete
 C:\Users\Kevin Zhu\LARI\LARI\obj\Debug\LARI.exe
 C:\Users\Kevin Zhu\LARI\LARI\obj\Debug\LARI.pdb
 C:\Users\Kevin Zhu\LARI\LARI\obj\Debug\LARI_Content.g.cs
+Z:\LARI\LARI\obj\Debug\LARI_Content.g.cs
