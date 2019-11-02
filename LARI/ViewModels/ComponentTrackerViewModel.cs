@@ -406,6 +406,7 @@ namespace LARI.ViewModels
         {
             if (CanEditOrDeleteSystem())
             {
+                this.equipageModel.AcquireEquipage().RemoveSystem(SelectedSystem.Name);
                 Systems.Remove(SelectedSystem);
             }
             else

@@ -43,6 +43,7 @@ namespace UW.LARI.Datatypes
         private SQLiteCommand getAllComponentsForSystemCommand;
         private SQLiteCommand getAllComponentsCommand;
         private SQLiteCommand getAllSystemsCommand;
+        private SQLiteCommand removeSystemCommand;
 
         #endregion
 
@@ -210,6 +211,9 @@ namespace UW.LARI.Datatypes
                     this.Fleet.RemoveAt(i);
                 }
             }
+
+            removeSystemCommand.Parameters["@Name"].Value = afslSystemName;
+            removeSystemCommand.ExecuteNonQuery();
         }
 
         /// <summary>
@@ -603,6 +607,15 @@ namespace UW.LARI.Datatypes
             initializeGetComponentCommand();
             initializeGetAllComponentsForSystemCommand();
             initializeGetAllSystemsCommand();
+            initializeRemoveSystemsCommand();
+        }
+
+        private void initializeRemoveSystemsCommand()
+        {
+            string removeSystemSql = @"DELETE FROM Systems WHERE name=@Name";
+            removeSystemCommand = conn.CreateCommand();
+            removeSystemCommand.CommandText = removeSystemSql;
+            removeSystemCommand.Parameters.AddWithValue("@Name", "");
         }
 
         private void initializeCreateTablesCommand()
