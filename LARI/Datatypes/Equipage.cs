@@ -577,17 +577,17 @@ namespace UW.LARI.Datatypes
         #region Private Methods
         private WingTypes ConvertToWingType(string wingType)
         {
-            if (wingType.Equals(WingTypes.FixedWing))
+            if (wingType.Equals(WingTypes.FixedWing.ToString()))
             {
                 return WingTypes.FixedWing;
             }
-            else if (wingType.Equals(WingTypes.Octo))
+            else if (wingType.Equals(WingTypes.Octo.ToString()))
             {
                 return WingTypes.Octo;
-            } else if (wingType.Equals(WingTypes.Quad))
+            } else if (wingType.Equals(WingTypes.Quad.ToString()))
             {
                 return WingTypes.Quad;
-            } else if (wingType.Equals(WingTypes.None))
+            } else if (wingType.Equals(WingTypes.None.ToString()))
             {
                 return WingTypes.None;
             } else
