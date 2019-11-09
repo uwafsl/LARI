@@ -18,6 +18,21 @@ namespace UW.LARI.Datatypes
         #region Fields
 
         /// <summary>
+        /// See Id property.
+        /// </summary>
+        private int id;
+
+        /// <summary>
+        /// See Name property.
+        /// </summary>
+        public string name;
+
+        /// <summary>
+        /// See Date property.
+        /// </summary>
+        private string date;
+
+        /// <summary>
         /// See Description property.
         /// </summary>
         private string description;
@@ -28,7 +43,7 @@ namespace UW.LARI.Datatypes
         private int partNumber;
 
         /// <summary>
-        /// See FlightTime property
+        /// See FlightTime property: TODO: Ask what this is
         /// </summary>
         private double flightTime;
 
@@ -43,12 +58,12 @@ namespace UW.LARI.Datatypes
         private string history;
 
         /// <summary>
-        /// See HasCrashed property
+        /// See HasCrashed property TODO: Ask what this is
         /// </summary>
         private string crashNotes;
 
         /// <summary>
-        /// See Notes property
+        /// See Notes property TODO: Ask what this is
         /// </summary>
         private string generalNotes;
 
@@ -73,18 +88,18 @@ namespace UW.LARI.Datatypes
         /// <param name="paramCrashNotes"></param>
         /// <param name="paramGeneralNotes"></param>
         /// <param name="paramActive"></param>
-        public Component(string paramDescription, int paramPartNumber, double paramFlightTime,
-                         string paramLocation, string paramHistory, string paramCrashNotes,
-                         string paramGeneralNotes, bool paramActive)
+        public Component(int paramId, string paramName, string paramDate, 
+                         string paramDescription, bool paramActive) /// Reinsert: History
         {
+            id = paramId;
+            name = paramName;
+            date = paramDate;
+            location = "lab";
             description = paramDescription;
-            partNumber = paramPartNumber;
-            flightTime = paramFlightTime;
-            location = paramLocation;
-            history = paramHistory;
-            crashNotes = paramCrashNotes;
-            generalNotes = paramGeneralNotes;
+            history = "test history";
             active = paramActive;
+            crashNotes = "not yet";
+
         }
 
         /// <summary>
@@ -93,6 +108,7 @@ namespace UW.LARI.Datatypes
         /// </summary>
         /// <param name="xmlReader"></param>
         /// <returns></returns>
+        [Obsolete("XML Component reader is deprecated, database is now using SQLite")]
         public Component(ref XmlReader reader)
         {
             if (reader.LocalName != Component.LocalName)
@@ -303,8 +319,7 @@ namespace UW.LARI.Datatypes
         public Component DeepCopy()
         {
             //create a new object
-            Component copy = new Component(this.Description, this.PartNumber, this.FlightTime, this.Location, 
-                                            this.History, this.CrashNotes, this.GeneralNotes, this.Active);
+            Component copy = new Component(this.id, this.name, this.date, this.description, this.active);
             return copy;
         }
 

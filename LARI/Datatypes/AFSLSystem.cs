@@ -243,6 +243,7 @@ namespace UW.LARI.Datatypes
         /// serialize the system as xml
         /// </summary>
         /// <param name="writer"></param>
+        [Obsolete("WriteAsXML is deprecated, database is now using SQLite")]
         public void WriteAsXML(XmlWriter writer)
         {
             writer.WriteStartElement(AFSLSystem.LocalName);
@@ -258,6 +259,7 @@ namespace UW.LARI.Datatypes
             writer.WriteEndElement();
         }
 
+        [Obsolete("ReadFromXML is deprecated, database is now using SQLite")]
         public void ReadFromXML(ref XmlReader reader)
         {
             this.Components = new List<Component>();

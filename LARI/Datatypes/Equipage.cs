@@ -78,7 +78,7 @@ namespace UW.LARI.Datatypes
         /// <summary>
         /// Constructor that takes a given, existing database
         /// </summary>
-        public Equipage() /// TEST: change this parameter back
+        public Equipage() 
         {
             string dbFilePath = ".\\test.db";
             if (!File.Exists(dbFilePath))
@@ -227,12 +227,12 @@ namespace UW.LARI.Datatypes
             DateTime startDate;
             List<Component> components;
             WingTypes wingType;
-            using (var tx = conn.BeginTransaction())
-            {
+            ///using (var tx = conn.BeginTransaction())
+            ///{
                 getSystemCommand.Parameters["@Name"].Value = systemName;
                 using (SQLiteDataReader reader = getSystemCommand.ExecuteReader())
                 {
-                    tx.Commit();
+                    ///tx.Commit();
                     if (!reader.Read())
                     {
                         return null;
@@ -245,7 +245,7 @@ namespace UW.LARI.Datatypes
                         startDate = reader.GetDateTime(3);
                     }
                 }
-            }
+            ///}
 
             // Get corresponding components
             components = GetAllComponentsForSystem(systemName);
@@ -294,7 +294,8 @@ namespace UW.LARI.Datatypes
                     if (reader.Read())
                     {
                         // TODO: Link up the notes and crashHistory stuff
-                        return new Component(reader.GetString(1), reader.GetInt32(0), 1, reader.GetString(5), "", "", "", reader.GetBoolean(4));
+                        return new Component(reader.GetInt32(0), reader.GetString(1), 
+                                             reader.GetString(3), reader.GetString(2), reader.GetBoolean(4));
                     } else
                     {
                         return null;
@@ -311,22 +312,25 @@ namespace UW.LARI.Datatypes
         private List<Component> GetAllComponentsForSystem(string systemName)
         {
             List<Component> components = new List<Component>();
-            using (var tx = conn.BeginTransaction())
-            {
+            ///using (var tx = conn.BeginTransaction())
+            ///{
                 getAllComponentsForSystemCommand.Parameters["@System"].Value = systemName;
                 using (SQLiteDataReader reader = getAllComponentsForSystemCommand.ExecuteReader())
                 {
-                    tx.Commit();
+                    ///tx.Commit();
                     if (reader.HasRows)
                     {
                         while (reader.Read())
                         {
-                            // TODO: Link up the notes and crashHistory stuff
-                            components.Add(new Component(reader.GetString(1), reader.GetInt32(0), 1, reader.GetString(5), "", "", "", reader.GetBoolean(4)));
+                        // TODO: Link up the notes and crashHistory stuff
+                            Component temp = new Component(reader.GetInt32(0), reader.GetString(1),
+                                                    reader.GetString(3), reader.GetString(2), reader.GetBoolean(4));
+                            components.Add(temp);
+                            Console.WriteLine(temp.name);
                         }
                     }
                 }
-            }
+            ///}
             return components;
         }
 
@@ -348,7 +352,8 @@ namespace UW.LARI.Datatypes
                         {
                             reader.Read();
                             // TODO: Link up the notes and crashHistory stuff
-                            components.Add(new Component(reader.GetString(1), reader.GetInt32(0), 1, reader.GetString(5), "", "", "", reader.GetBoolean(4)));
+                            components.Add(new Component(reader.GetInt32(0), reader.GetString(1),
+                                                         reader.GetString(3), reader.GetString(2), reader.GetBoolean(4)));
                         }
                     }
                 }
@@ -675,10 +680,11 @@ namespace UW.LARI.Datatypes
 
         private void initializeInsertComponentCommand()
         {
-            string sql = @"INSERT INTO Components(name, description, start_date, active, system) 
-            VALUES (@Name, @Description, @StartDate, @Active, @System)";
+            string sql = @"INSERT INTO Components(id, name, description, start_date, active, system) 
+            VALUES (@Id, @Name, @Description, @StartDate, @Active, @System)";
             insertComponentCommand = conn.CreateCommand();
             insertComponentCommand.CommandText = sql;
+            insertComponentCommand.Parameters.AddWithValue("@Id", "");
             insertComponentCommand.Parameters.AddWithValue("@Name", "");
             insertComponentCommand.Parameters.AddWithValue("@Description", "");
             insertComponentCommand.Parameters.AddWithValue("@StartDate", DateTime.Now);
