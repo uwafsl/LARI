@@ -81,8 +81,10 @@ namespace UW.LARI.Datatypes
         public Equipage() 
         {
             string dbFilePath = ".\\test.db";
+            bool dneFlag = false;
             if (!File.Exists(dbFilePath))
             {
+                dneFlag = true;
                 SQLiteConnection.CreateFile(dbFilePath);
             }
             conn = new SQLiteConnection("Data Source=" + dbFilePath + ";Version=3;");
@@ -91,6 +93,10 @@ namespace UW.LARI.Datatypes
             command.CommandText = "PRAGMA foreign_keys=ON";
             command.ExecuteNonQuery();
             this.initializeSqlCommands();
+            if(dneFlag)
+            {
+                createTablesCommand.ExecuteNonQuery();
+            }
             this.startErrorHandling();
             this.initializeOtherPrivateFields();
             this.createCommands();
