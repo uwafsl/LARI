@@ -297,7 +297,7 @@ namespace LARI.ViewModels
 
             try
             {
-                this.equipageModel.ReadFromFile(EquipageFilePath);
+                //this.equipageModel.ReadFromFile(EquipageFilePath);
                 this.UpdateSystemDisplay();
             }
             catch (FileNotFoundException)
@@ -335,7 +335,7 @@ namespace LARI.ViewModels
 
             try
             {
-                this.equipageModel.WriteToFile(EquipageFilePath);
+                //this.equipageModel.WriteToFile(EquipageFilePath);
             }
             catch (FileNotFoundException)
             {

@@ -28,9 +28,9 @@ namespace UW.LARI.Datatypes
         public string name;
 
         /// <summary>
-        /// See Date property.
+        /// See StartDate property.
         /// </summary>
-        private string date;
+        private string startDate;
 
         /// <summary>
         /// See Description property.
@@ -38,12 +38,12 @@ namespace UW.LARI.Datatypes
         private string description;
 
         /// <summary>
-        /// See PartNumber property
+        /// See SerialNumber property
         /// </summary>
-        private int partNumber;
+        private string serialNumber;
 
         /// <summary>
-        /// See FlightTime property: TODO: Ask what this is
+        /// See FlightTime property
         /// </summary>
         private double flightTime;
 
@@ -58,19 +58,19 @@ namespace UW.LARI.Datatypes
         private string history;
 
         /// <summary>
-        /// See HasCrashed property TODO: Ask what this is
+        /// See Damaged property
         /// </summary>
-        private string crashNotes;
-
-        /// <summary>
-        /// See Notes property TODO: Ask what this is
-        /// </summary>
-        private string generalNotes;
+        private bool damaged;
 
         /// <summary>
         /// See Active property
         /// </summary>
         private bool active;
+
+        /// <summary>
+        /// See System property
+        /// </summary>
+        private string system;
 
         #endregion
 
@@ -79,27 +79,31 @@ namespace UW.LARI.Datatypes
         /// <summary>
         /// Creates a Component object using the passed in arguments.
         /// </summary>
+        /// <param name="paramId"></param>
+        /// <param name="paramName"></param>
+        /// <param name="paramStartDate"></param>
         /// <param name="paramDescription"></param>
-        /// <param name="paramPartNumber"></param>
+        /// <param name="paramSerialNumber"></param>
         /// <param name="paramFlightTime"></param>
         /// <param name="paramLocation"></param>
         /// <param name="paramHistory"></param>
-        /// <param name="paramHistory"></param>
-        /// <param name="paramCrashNotes"></param>
-        /// <param name="paramGeneralNotes"></param>
+        /// <param name="paramDamaged"></param>
         /// <param name="paramActive"></param>
-        public Component(int paramId, string paramName, string paramDate, 
-                         string paramDescription, bool paramActive) /// Reinsert: History
+        public Component(int paramId, string paramName, string paramStartDate, 
+                         string paramDescription, string paramSerialNumber, double paramFlightTime,
+                         string paramLocation, string paramHistory, bool paramDamaged, bool paramActive, string paramSystem)
         {
             id = paramId;
             name = paramName;
-            date = paramDate;
-            location = "lab";
             description = paramDescription;
-            history = "test history";
+            serialNumber = paramSerialNumber;
+            flightTime = paramFlightTime;
+            startDate = paramStartDate;
+            location = paramLocation;
+            history = paramHistory;
+            damaged = paramDamaged;
             active = paramActive;
-            crashNotes = "not yet";
-
+            system = paramSystem;
         }
 
         /// <summary>
@@ -108,48 +112,48 @@ namespace UW.LARI.Datatypes
         /// </summary>
         /// <param name="xmlReader"></param>
         /// <returns></returns>
-        [Obsolete("XML Component reader is deprecated, database is now using SQLite")]
-        public Component(ref XmlReader reader)
-        {
-            if (reader.LocalName != Component.LocalName)
-            {
-                throw new System.ArgumentException("XmlReader is misaligned. Want: " + Component.LocalName +
-                                                        ", Have: " + reader.LocalName, "reader");
-            }
+        //[Obsolete("XML Component reader is deprecated, database is now using SQLite")]
+        //public Component(ref XmlReader reader)
+        //{
+        //    if (reader.LocalName != Component.LocalName)
+        //    {
+        //        throw new System.ArgumentException("XmlReader is misaligned. Want: " + Component.LocalName +
+        //                                                ", Have: " + reader.LocalName, "reader");
+        //    }
 
-            reader.Read();
+        //    reader.Read();
 
-            while (reader.LocalName != Component.LocalName)
-            {
-                switch (reader.LocalName)
-                {
-                    case "description":
-                        description = reader.ReadElementContentAsString();
-                        break;
-                    case "id":
-                        partNumber = reader.ReadElementContentAsInt();
-                        break;
-                    case "flighttime":
-                        flightTime = reader.ReadElementContentAsDouble();
-                        break;
-                    case "location":
-                        location = reader.ReadElementContentAsString();
-                        break;
-                    case "history":
-                        history = reader.ReadElementContentAsString();
-                        break;
-                    case "crashnotes":
-                        crashNotes = reader.ReadElementContentAsString();
-                        break;
-                    case "generalnotes":
-                        generalNotes = reader.ReadElementContentAsString();
-                        break;
-                    case "active":
-                        active = reader.ReadElementContentAsBoolean();
-                        break;
-                }
-            }
-        }
+        //    while (reader.LocalName != Component.LocalName)
+        //    {
+        //        switch (reader.LocalName)
+        //        {
+        //            case "description":
+        //                description = reader.ReadElementContentAsString();
+        //                break;
+        //            case "id":
+        //                partNumber = reader.ReadElementContentAsInt();
+        //                break;
+        //            case "flighttime":
+        //                flightTime = reader.ReadElementContentAsDouble();
+        //                break;
+        //            case "location":
+        //                location = reader.ReadElementContentAsString();
+        //                break;
+        //            case "history":
+        //                history = reader.ReadElementContentAsString();
+        //                break;
+        //            case "crashnotes":
+        //                crashNotes = reader.ReadElementContentAsString();
+        //                break;
+        //            case "generalnotes":
+        //                generalNotes = reader.ReadElementContentAsString();
+        //                break;
+        //            case "active":
+        //                active = reader.ReadElementContentAsBoolean();
+        //                break;
+        //        }
+        //    }
+        //}
 
         #endregion
 
@@ -173,15 +177,15 @@ namespace UW.LARI.Datatypes
         /// <summary>
         /// The unique part number associated with this component.
         /// </summary>
-        public int PartNumber
+        public string SerialNumber
         {
             get
             {
-                return this.partNumber;
+                return this.serialNumber;
             }
             set
             {
-                this.partNumber = value;
+                this.serialNumber = value;
             }
         }
 
@@ -233,31 +237,28 @@ namespace UW.LARI.Datatypes
         /// <summary>
         /// Notes on any previous crashes
         /// </summary>
-        public string CrashNotes
+        public string Name
         {
             get
             {
-                return this.crashNotes;
+                return this.name;
             }
             set
             {
-                this.crashNotes = value;
+                this.name = value;
             }
 
         }
 
-        /// <summary>
-        /// Miscellaneous notes
-        /// </summary>
-        public string GeneralNotes
+        public Boolean Damaged
         {
             get
             {
-                return this.generalNotes;
+                return this.damaged;
             }
             set
             {
-                this.generalNotes = value;
+                this.damaged = value;
             }
         }
 
@@ -276,6 +277,38 @@ namespace UW.LARI.Datatypes
             }
         }
 
+        public string StartDate
+        {
+            get
+            {
+                return this.startDate;
+            }
+            set
+            {
+                this.startDate = value;
+            }
+        }
+
+        public int Id
+        {
+            get
+            {
+                return this.Id;
+            }
+            set
+            {
+                this.Id = value;
+            }
+        }
+
+        public string System
+        {
+            get
+            {
+                return this.system;
+            }
+        }
+
 
 
         /// <summary>
@@ -284,29 +317,30 @@ namespace UW.LARI.Datatypes
         /// </summary>
         /// <param name="xmlWriter"></param>
         /// <returns></returns>
-        public void WriteAsXML(XmlWriter writer)
-        {
-            // create the root node
-            writer.WriteStartElement(Component.LocalName);
+        //[Obsolete("WriteAsXML is deprecated, database is now using SQLite")]
+        //public void WriteAsXML(XmlWriter writer)
+        //{
+        //    // create the root node
+        //    writer.WriteStartElement(Component.LocalName);
 
-            // create attributes for properties
-            writer.WriteElementString("description", this.Description);
-            writer.WriteElementString("id", Convert.ToString(this.PartNumber));
-            writer.WriteElementString("flighttime", Convert.ToString(this.FlightTime));
-            writer.WriteElementString("location", this.Location);
-            writer.WriteElementString("history", this.History);
-            writer.WriteElementString("crashnotes", this.CrashNotes);
-            writer.WriteElementString("generalnotes", this.GeneralNotes);
-            writer.WriteElementString("active", Convert.ToString(this.Active));
+        //    // create attributes for properties
+        //    writer.WriteElementString("description", this.Description);
+        //    writer.WriteElementString("id", Convert.ToString(this.PartNumber));
+        //    writer.WriteElementString("flighttime", Convert.ToString(this.FlightTime));
+        //    writer.WriteElementString("location", this.Location);
+        //    writer.WriteElementString("history", this.History);
+        //    writer.WriteElementString("crashnotes", this.CrashNotes);
+        //    writer.WriteElementString("generalnotes", this.GeneralNotes);
+        //    writer.WriteElementString("active", Convert.ToString(this.Active));
 
-            // close attribute writer
-            writer.WriteEndElement();
-        }
+        //    // close attribute writer
+        //    writer.WriteEndElement();
+        //}
 
         /// <summary>
         /// localName used to encode object as xml element
         /// </summary>
-        public const string LocalName = "component";
+        //public const string LocalName = "component";
 
         #endregion
 
@@ -319,7 +353,9 @@ namespace UW.LARI.Datatypes
         public Component DeepCopy()
         {
             //create a new object
-            Component copy = new Component(this.id, this.name, this.date, this.description, this.active);
+            Component copy = new Component(this.Id, this.Name, this.StartDate,
+                         this.Description, this.SerialNumber, this.FlightTime,
+                         this.Location, this.History, this.Damaged, this.Active, this.System);
             return copy;
         }
 

@@ -68,7 +68,7 @@ namespace LARI.ViewModels
         /// </summary>
         public void ApplyComponent()
         {
-
+            Console.WriteLine("test");
         }
 
         /// <summary>
