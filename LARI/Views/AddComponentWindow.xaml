@@ -15,7 +15,7 @@
         <Grid Margin="20, 15, 0, 15">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Description:" Width="100" />
-                <TextBox Width="300" Height="25" SpellCheck.IsEnabled="True" FontSize="14" />
+                <TextBox Text="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="300" Height="25" SpellCheck.IsEnabled="True" FontSize="14" />
             </StackPanel>
         </Grid>
         <Grid Margin="20, 5, 0, 15">
@@ -23,14 +23,14 @@
                 <Label Content="Date:" Width="50" />
                 <DatePicker Width="105" Height="25" Margin="0,6"/>
                 <Label Content="           Location:" Width="95" />
-                <TextBox Width="150" Height="25" FontSize="14"/>
+                <TextBox Text="{Binding Path=Location, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="150" Height="25" FontSize="14"/>
                 
             </StackPanel>
         </Grid>
         <Grid Margin="20, 5, 0, 15">
             <StackPanel Orientation="Horizontal">
                 <Label Content=" Flight Time:" Width="75" />
-                <TextBox Width="150" Height="25" FontSize="14"/>
+                <TextBox Text="{Binding Path=FlightTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="150" Height="25" FontSize="14"/>
                 <Label Content=" Active?" Width="54" />
                 <Grid Margin="0, 7, 0, 15">
                     <CheckBox/>
@@ -52,7 +52,7 @@
         <Grid Margin="20, 5, 0, 15">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Notes:" Width="115" />
-                <TextBox Width="200" Height="50" SpellCheck.IsEnabled="True" TextWrapping="Wrap"/>
+                <TextBox Text="{Binding Path=Notes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200" Height="50" SpellCheck.IsEnabled="True" TextWrapping="Wrap"/>
             </StackPanel>
         </Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
