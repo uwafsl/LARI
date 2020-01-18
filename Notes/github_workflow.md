@@ -65,7 +65,7 @@
     <li>If successful, push to origin: <code>git push</code></li>
 </ol>
 <p>That's how you commit/push your changes to origin. Now, we can always revert your code back to any commit that you push. This is great when things break or we make mistakes using git.
-
+    
 <h2>Submit a Pull Request</h2>
 <p>A pull request will allow you to merge your changes into the master branch cleanly. It requires someone to review your code, ensuring the correctness of the feature you added. Most likely, that reviewer will be an administrator.
 <ol>
@@ -78,6 +78,13 @@
     <li>Eventually, your pull request will get merged. Once merged, pull changes down onto your local machine on the master branch and ensure everything is still working properly.</li>
     <li>If you need to update the team about your feature, do so now as it's is part of the production code.</li>
 </ol>
+
+<h2>[WARNING] When Playing With Git</h2>
+<p>There should NEVER be a time when you are trying to switch from your current branch to the master branch and try to do a merging yourself.
+<ol>
+    <li>If you find yourself to be in the master branch (say you did <code>git checkout master</code> at any point), what you should NEVER do is to perform a <code>git merge {yourBranch}</code>.</li>
+</ol>
+</p>
 
 <h2>Summary</h2>
 <p>You now should be able to work in your feature branches and complete user stories as needed. Final words:
