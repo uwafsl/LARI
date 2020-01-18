@@ -22,6 +22,61 @@ namespace LARI.ViewModels
         private ICommand applyComponentWindow;
         private ICommand cancelComponentWindow;
 
+        /// <summary>
+        /// See Id property.
+        /// </summary>
+        private int id;
+
+        /// <summary>
+        /// See Name property.
+        /// </summary>
+        public string name;
+
+        /// <summary>
+        /// See StartDate property.
+        /// </summary>
+        private string startDate;
+
+        /// <summary>
+        /// See Description property.
+        /// </summary>
+        private string description;
+
+        /// <summary>
+        /// See SerialNumber property
+        /// </summary>
+        private string serialNumber;
+
+        /// <summary>
+        /// See FlightTime property
+        /// </summary>
+        private double flightTime;
+
+        /// <summary>
+        /// See Location property
+        /// </summary>
+        private string location;
+
+        /// <summary>
+        /// See History property
+        /// </summary>
+        private string history;
+
+        /// <summary>
+        /// See Damaged property
+        /// </summary>
+        private bool damaged;
+
+        /// <summary>
+        /// See Active property
+        /// </summary>
+        private bool active;
+
+        /// <summary>
+        /// See System property
+        /// </summary>
+        private string system;
+
         #endregion
 
         #region Constructors
@@ -59,6 +114,171 @@ namespace LARI.ViewModels
             get { return this.cancelComponentWindow; }
         }
 
+        /// <summary>
+        /// A desciption of this component.
+        /// </summary>
+        public string Description
+        {
+            get
+            {
+                return this.description;
+            }
+            set
+            {
+                this.description = value;
+                OnPropertyChanged("Description");
+            }
+        }
+
+        /// <summary>
+        /// The unique part number associated with this component.
+        /// </summary>
+        public string SerialNumber
+        {
+            get
+            {
+                return this.serialNumber;
+            }
+            set
+            {
+                this.serialNumber = value;
+                OnPropertyChanged("Serial Number");
+            }
+        }
+
+        /// <summary>
+        /// The total flight time (in minutes) logged on this component.
+        /// </summary>
+        public double FlightTime
+        {
+            get
+            {
+                return this.flightTime;
+            }
+            set
+            {
+                this.flightTime = value;
+                OnPropertyChanged("FlightTime");
+            }
+        }
+
+        /// <summary>
+        /// The current location of this component. 
+        /// </summary>
+        public string Location
+        {
+            get
+            {
+                return this.location;
+            }
+            set
+            {
+                this.location = value;
+                OnPropertyChanged("Location");
+            }
+        }
+
+        /// <summary>
+        /// Previous airframes and removal dates associated with this component.
+        /// </summary>
+        public string History
+        {
+            get
+            {
+                return this.history;
+            }
+            set
+            {
+                this.history = value;
+                OnPropertyChanged("History");
+            }
+        }
+
+        /// <summary>
+        /// Notes on any previous crashes
+        /// </summary>
+        public string Name
+        {
+            get
+            {
+                return this.name;
+            }
+            set
+            {
+                this.name = value;
+                OnPropertyChanged("Name");
+            }
+
+        }
+
+        public Boolean Damaged
+        {
+            get
+            {
+                return this.damaged;
+            }
+            set
+            {
+                this.damaged = value;
+                OnPropertyChanged("Damaged");
+            }
+        }
+
+        /// <summary>
+        /// Whether or not the component is currently active.
+        /// </summary>
+        public Boolean Active
+        {
+            get
+            {
+                return this.active;
+            }
+            set
+            {
+                this.active = value;
+                OnPropertyChanged("Active");
+            }
+        }
+
+        public string StartDate
+        {
+            get
+            {
+                return this.startDate;
+            }
+            set
+            {
+                this.startDate = value;
+                OnPropertyChanged("StartDate");
+            }
+        }
+
+        public int Id
+        {
+            get
+            {
+                return this.Id;
+            }
+            set
+            {
+                this.Id = value;
+                OnPropertyChanged("Id");
+            }
+        }
+
+        public string System
+        {
+            get
+            {
+                return this.system;
+            }
+            set
+            {
+                this.system = value;
+                OnPropertyChanged("System");
+            }
+        }
+
         #endregion
 
         #region Public Methods
@@ -68,7 +288,7 @@ namespace LARI.ViewModels
         /// </summary>
         public void ApplyComponent()
         {
-
+            bool exception = false;
         }
 
         /// <summary>

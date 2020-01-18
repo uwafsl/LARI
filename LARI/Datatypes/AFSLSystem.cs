@@ -207,9 +207,9 @@ namespace UW.LARI.Datatypes
         /// Delete component from system
         /// </summary>
         /// <param name="partNumber"
-        public void DeleteComponent(int partNumber)
+        public void DeleteComponent(int id)
         {
-            int removed = this.Components.RemoveAll(x => x.PartNumber == partNumber);
+            int removed = this.Components.RemoveAll(x => x.Id == id);
             if(removed < 1)
             {
                 throw new KeyNotFoundException("Component not found on system");
@@ -224,12 +224,12 @@ namespace UW.LARI.Datatypes
         /// Delete component from system and return it
         /// </summary>
         /// <param name="partNumber"
-        public Component PopComponent(int partNumber)
+        public Component PopComponent(int id)
         {
             Component popped;
             for(int i = 0; i < this.Components.Count; i++)
             {
-                if(this.Components[i].PartNumber == partNumber)
+                if(this.Components[i].Id == id)
                 {
                     popped = this.Components[i];
                     this.Components.RemoveAt(i);
@@ -243,50 +243,52 @@ namespace UW.LARI.Datatypes
         /// serialize the system as xml
         /// </summary>
         /// <param name="writer"></param>
-        public void WriteAsXML(XmlWriter writer)
-        {
-            writer.WriteStartElement(AFSLSystem.LocalName);
-            writer.WriteAttributeString(nameof(this.Name), this.Name);
-            // TODO: the description may be a bit long for an attribute string.
-            //    Consider adding tag for description.
-            writer.WriteAttributeString(nameof(this.Description), this.Description);
-            writer.WriteAttributeString(nameof(this.WingType), this.WingType.ToString());
-            foreach (Component comp in this.Components)
-            {
-                comp.WriteAsXML(writer);
-            }
-            writer.WriteEndElement();
-        }
+        //[Obsolete("WriteAsXML is deprecated, database is now using SQLite")]
+        //public void WriteAsXML(XmlWriter writer)
+        //{
+        //    writer.WriteStartElement(AFSLSystem.LocalName);
+        //    writer.WriteAttributeString(nameof(this.Name), this.Name);
+        //    // TODO: the description may be a bit long for an attribute string.
+        //    //    Consider adding tag for description.
+        //    writer.WriteAttributeString(nameof(this.Description), this.Description);
+        //    writer.WriteAttributeString(nameof(this.WingType), this.WingType.ToString());
+        //    foreach (Component comp in this.Components)
+        //    {
+        //        comp.WriteAsXML(writer);
+        //    }
+        //    writer.WriteEndElement();
+        //}
 
-        public void ReadFromXML(ref XmlReader reader)
-        {
-            this.Components = new List<Component>();
+        //[Obsolete("ReadFromXML is deprecated, database is now using SQLite")]
+        //public void ReadFromXML(ref XmlReader reader)
+        //{
+        //    this.Components = new List<Component>();
 
-            if (reader.LocalName != AFSLSystem.LocalName)
-            {
-                throw new XmlException("Unexpected xml element. Expected: " + AFSLSystem.LocalName +
-                                                        ", Value: " + reader.LocalName);
-            }
+        //    if (reader.LocalName != AFSLSystem.LocalName)
+        //    {
+        //        throw new XmlException("Unexpected xml element. Expected: " + AFSLSystem.LocalName +
+        //                                                ", Value: " + reader.LocalName);
+        //    }
 
-            this.Name = reader.GetAttribute(nameof(this.Name));
-            this.Description = reader.GetAttribute(nameof(this.Description));
-            this.WingType = getWingTypeFromString(reader.GetAttribute(nameof(this.WingType)));
+        //    this.Name = reader.GetAttribute(nameof(this.Name));
+        //    this.Description = reader.GetAttribute(nameof(this.Description));
+        //    this.WingType = getWingTypeFromString(reader.GetAttribute(nameof(this.WingType)));
 
-            if (reader.IsEmptyElement)
-            {
-                // handle system with no components
-                return;
-            }
+        //    if (reader.IsEmptyElement)
+        //    {
+        //        // handle system with no components
+        //        return;
+        //    }
 
-            reader.Read(); // read past AFSLSystem start tag
+        //    reader.Read(); // read past AFSLSystem start tag
 
-            while (reader.LocalName != AFSLSystem.LocalName)
-            {
-                Component readComponent = new Component(ref reader);
-                this.AddComponent(readComponent);
-                reader.Read(); // read past end tag of component
-            }
-        }
+        //    while (reader.LocalName != AFSLSystem.LocalName)
+        //    {
+        //        Component readComponent = new Component(ref reader);
+        //        this.AddComponent(readComponent);
+        //        reader.Read(); // read past end tag of component
+        //    }
+        //}
 
         /// <summary>
         /// Creates a clone of a system object with an empty components list.

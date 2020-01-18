@@ -32,3 +32,39 @@ Z:\LARI\LARI\obj\Debug\LARI.csproj.CoreCompileInputs.cache
 Z:\LARI\LARI\obj\Debug\LARI.csproj.CopyComplete
 Z:\LARI\LARI\obj\Debug\LARI.exe
 Z:\LARI\LARI\obj\Debug\LARI.pdb
+C:\Users\Kevin Zhu\LARI\LARI\bin\Debug\LARI.exe.config
+C:\Users\Kevin Zhu\LARI\LARI\bin\Debug\LARI.exe
+C:\Users\Kevin Zhu\LARI\LARI\bin\Debug\LARI.pdb
+C:\Users\Kevin Zhu\LARI\LARI\bin\Debug\EntityFramework.dll
+C:\Users\Kevin Zhu\LARI\LARI\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Kevin Zhu\LARI\LARI\bin\Debug\System.Data.SQLite.dll
+C:\Users\Kevin Zhu\LARI\LARI\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Kevin Zhu\LARI\LARI\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Kevin Zhu\LARI\LARI\bin\Debug\EntityFramework.xml
+C:\Users\Kevin Zhu\LARI\LARI\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Kevin Zhu\LARI\LARI\bin\Debug\System.Data.SQLite.xml
+C:\Users\Kevin Zhu\LARI\LARI\bin\Debug\System.Data.SQLite.dll.config
+C:\Users\Kevin Zhu\LARI\LARI\obj\Debug\LARI.csprojAssemblyReference.cache
+C:\Users\Kevin Zhu\LARI\LARI\obj\Debug\Views\AddComponentWindow.g.cs
+C:\Users\Kevin Zhu\LARI\LARI\obj\Debug\Views\AddSystemWindow.g.cs
+C:\Users\Kevin Zhu\LARI\LARI\obj\Debug\Views\ComponentTrackerView.g.cs
+C:\Users\Kevin Zhu\LARI\LARI\obj\Debug\Views\EditSystemWindow.g.cs
+C:\Users\Kevin Zhu\LARI\LARI\obj\Debug\Views\MainWindow.g.cs
+C:\Users\Kevin Zhu\LARI\LARI\obj\Debug\App.g.cs
+C:\Users\Kevin Zhu\LARI\LARI\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Kevin Zhu\LARI\LARI\obj\Debug\LARI_MarkupCompile.cache
+C:\Users\Kevin Zhu\LARI\LARI\obj\Debug\LARI_MarkupCompile.lref
+C:\Users\Kevin Zhu\LARI\LARI\obj\Debug\Views\AddComponentWindow.baml
+C:\Users\Kevin Zhu\LARI\LARI\obj\Debug\Views\AddSystemWindow.baml
+C:\Users\Kevin Zhu\LARI\LARI\obj\Debug\Views\ComponentTrackerView.baml
+C:\Users\Kevin Zhu\LARI\LARI\obj\Debug\Views\EditSystemWindow.baml
+C:\Users\Kevin Zhu\LARI\LARI\obj\Debug\Views\MainWindow.baml
+C:\Users\Kevin Zhu\LARI\LARI\obj\Debug\LARI.g.resources
+C:\Users\Kevin Zhu\LARI\LARI\obj\Debug\LARI.Properties.Resources.resources
+C:\Users\Kevin Zhu\LARI\LARI\obj\Debug\LARI.csproj.GenerateResource.cache
+C:\Users\Kevin Zhu\LARI\LARI\obj\Debug\LARI.csproj.CoreCompileInputs.cache
+C:\Users\Kevin Zhu\LARI\LARI\obj\Debug\LARI.csproj.CopyComplete
+C:\Users\Kevin Zhu\LARI\LARI\obj\Debug\LARI.exe
+C:\Users\Kevin Zhu\LARI\LARI\obj\Debug\LARI.pdb
+C:\Users\Kevin Zhu\LARI\LARI\obj\Debug\LARI_Content.g.cs
+Z:\LARI\LARI\obj\Debug\LARI_Content.g.cs

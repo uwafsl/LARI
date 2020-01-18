@@ -81,19 +81,19 @@ namespace LARI.Models
         /// Read equipage data from a properly formatted file.
         /// </summary>
         /// <param name="filePath">Path of file to read from.</param>
-        public void ReadFromFile(string filePath)
-        {
-            AcquireEquipage().ReadFromXMLFile(filePath);
-        }
+        //public void ReadFromFile(string filePath)
+        //{
+        //    AcquireEquipage().ReadFromXMLFile(filePath);
+        //}
 
         /// <summary>
         /// Read equipage data from a properly formatted file.
         /// </summary>
         /// <param name="filePath">Path of file to write to.</param>
-        public void WriteToFile(string filePath)
-        {
-            AcquireEquipage().WriteToXMLFile(filePath);
-        }
+        //public void WriteToFile(string filePath)
+        //{
+        //    AcquireEquipage().WriteToXMLFile(filePath);
+        //}
 
         #endregion
 

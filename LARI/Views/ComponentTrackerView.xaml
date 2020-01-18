@@ -92,14 +92,16 @@
                             AutoGenerateColumns="True" 
                             Margin="0,0,0,0" SelectionChanged="ComponentsTable_SelectionChanged_1" VerticalContentAlignment="Stretch">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header = "ID" Binding ="{Binding PartNumber}"/>
-                        <DataGridTextColumn Header = "Component" Binding="{Binding Component}"/>
-                        <DataGridTextColumn Header = "Date" Binding ="{Binding Time}" />
-                        <DataGridComboBoxColumn Header="Location" SelectedItemBinding="{Binding Location}" />
-                        <DataGridTextColumn Header="Notes" Binding="{Binding Notes}" />
+                        <DataGridTextColumn Header = "ID" Binding ="{Binding Id}"/>
+                        <DataGridTextColumn Header = "Component" Binding="{Binding Name}"/>
+                        <DataGridTextColumn Header ="Description" Binding="{Binding Description}"/>
+                        <DataGridTextColumn Header = "Start Date" Binding ="{Binding StartDate}" />
+                        <DataGridTextColumn Header = "Flight Time" Binding ="{Binding FlightTime}" />
+                        <DataGridTextColumn Header="Location" Binding="{Binding Location}" />
+                        <DataGridTextColumn Header="Serial Number" Binding="{Binding SerialNumber}" />
                         <DataGridTextColumn Header="History" Binding="{Binding History}" />
                         <DataGridCheckBoxColumn Header="Active" Binding="{Binding Active}"/>
-                        <DataGridCheckBoxColumn Header="Crashed" Binding="{Binding hasCrashed}"/>
+                        <DataGridCheckBoxColumn Header="Damaged" Binding="{Binding Damaged}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
