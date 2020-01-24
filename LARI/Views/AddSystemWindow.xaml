@@ -37,7 +37,7 @@
         </Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
             <Grid Margin="0, 0, 10, 0">
-                <Button Content="Apply" Width="50" Command="{Binding Path=ApplySystemWindow}" Margin="0,0,-0.8,0" Height="19" VerticalAlignment="Top"/>
+                <Button Content="Apply" Width="50" Command="{Binding Path=ApplySystemWindow}" Margin="0,0,-0.667,0" Height="20" VerticalAlignment="Top" Click="Button_Click"/>
             </Grid>
             <Grid Margin="0, 0, 15, 0">
                 <Button Content="Cancel" Width="50" IsCancel="True"/>
