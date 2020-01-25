@@ -193,7 +193,7 @@ namespace UW.LARI.Datatypes
             insertSystemCommand.Parameters["@Name"].Value = newSystem.name;
             insertSystemCommand.Parameters["@Description"].Value = newSystem.description;
             insertSystemCommand.Parameters["@WingType"].Value = newSystem.wingType;
-            insertSystemCommand.Parameters["@StartDate"].Value = DateTime.Now;
+            insertSystemCommand.Parameters["@StartDate"].Value = newSystem.startDate;
             insertSystemCommand.ExecuteNonQuery();
 
             // Add the components
@@ -255,7 +255,7 @@ namespace UW.LARI.Datatypes
 
             // Get corresponding components
             components = GetAllComponentsForSystem(systemName);
-            return new AFSLSystem(systemName, description, components, wingType);
+            return new AFSLSystem(startDate, systemName, description, components, wingType);
         }
 
         /// <summary>
@@ -843,7 +843,7 @@ namespace UW.LARI.Datatypes
         /// </summary>
         private void initializeOtherPrivateFields()
         {
-            this.fleet = new List<AFSLSystem>() { new AFSLSystem(InventorySystem, "inventory/unequipped", new List<Component>(), WingTypes.None) };
+            this.fleet = new List<AFSLSystem>() { new AFSLSystem(DateTime.Now, InventorySystem, "inventory/unequipped", new List<Component>(), WingTypes.None) };
         }
 
         /// <summary>

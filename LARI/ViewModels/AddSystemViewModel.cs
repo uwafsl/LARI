@@ -45,6 +45,11 @@ namespace LARI.ViewModels
         private WingTypes wingType;
 
         /// <summary>
+        /// New/current system's start date.
+        /// </summary>
+        private DateTime startDate;
+
+        /// <summary>
         /// Command to add new system or apply edits to currently selected system.
         /// </summary>
         private CommandHandler applySystemWindow;
@@ -140,7 +145,7 @@ namespace LARI.ViewModels
             ObservableCollection<AFSLSystem> tempSystem = this.componentTracker.Systems;
             try
             {
-                AFSLSystem newSys = new AFSLSystem(this.name, this.description, wingType: this.wingType);
+                AFSLSystem newSys = new AFSLSystem(this.startDate, this.name, this.description, wingType: this.wingType);
                 this.manager.AcquireEquipage().AddSystem(newSys);
                 this.componentTracker.UpdateSystemDisplay();
             }
@@ -184,7 +189,7 @@ namespace LARI.ViewModels
             {
                 return componentTracker.SelectedSystem;
             }
-            return new AFSLSystem();
+            return new AFSLSystem(DateTime.Now);
         }
         
         /// <summary>

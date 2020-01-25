@@ -30,7 +30,7 @@
         <Grid Margin="20, 5, 0, 15">
             <StackPanel Orientation="Horizontal">
                 <Label Content=" Flight Time:" Width="75" />
-                <TextBox Text="{Binding Path=FlightTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="150" Height="25" FontSize="14"/>
+                <TextBox Width="150" Height="25" FontSize="14"/>
                 <Label Content=" Active?" Width="54" />
                 <Grid Margin="0, 7, 0, 15">
                     <CheckBox/>

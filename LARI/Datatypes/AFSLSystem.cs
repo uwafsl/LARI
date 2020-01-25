@@ -52,6 +52,11 @@ namespace UW.LARI.Datatypes
         /// </summary>
         public WingTypes wingType;
 
+        /// <summary>
+        /// See StartDate property
+        /// </summary>
+        public DateTime startDate;
+
         #endregion
 
         #region Constructors
@@ -62,9 +67,10 @@ namespace UW.LARI.Datatypes
         /// <param name="name"></param>
         /// <param name="description"></param>
         /// <param name="components"></param>
-        public AFSLSystem(string name = DefaultName, string description = DefaultDescription,
+        public AFSLSystem(DateTime startDate, string name = DefaultName, string description = DefaultDescription,
             List<Component> components = null, WingTypes wingType = DefaultWingType)
         {
+            this.startDate = startDate;
             this.Name = name;
             this.Description = description;
             this.WingType = wingType;
@@ -175,6 +181,22 @@ namespace UW.LARI.Datatypes
                 // If no attribute labeled "Description" was found, just return the raw string
                 // representation.
                 return this.wingType.ToString();
+            }
+        }
+
+        /// <summary>
+        /// The start date of the system.
+        /// </summary>
+        public DateTime StartDate
+        {
+            get
+            {
+                return this.StartDate;
+            }
+
+            set
+            {
+                this.StartDate = value;
             }
         }
 
@@ -296,7 +318,7 @@ namespace UW.LARI.Datatypes
         /// <returns>System with same name, description and wing type but no components.</returns>
         public AFSLSystem EmptyClone()
         {
-            return new AFSLSystem(this.name, this.description, wingType: this.wingType);
+            return new AFSLSystem(this.startDate, this.name, this.description, wingType: this.wingType);
         }
 
         #endregion
